@@ -1,0 +1,13 @@
+<p>issue-list works!</p>
+<input type="text" #inputSearch (keyup)="search(inputSearch.value)" />
+
+<button (click)="getIssues()">Obtener issues</button>
+
+<ul>
+    <li *ngFor="let issue of issues">
+        <!-- repo id {{ issue.id }} <br> -->
+        repo name {{ issue.name }} <br>
+        issues count {{issue.open_issues_count}}
+        <!-- {{ issue.created_at }} -->
+    </li>
+</ul>
