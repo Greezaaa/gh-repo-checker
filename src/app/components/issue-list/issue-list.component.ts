@@ -33,20 +33,23 @@ export class IssueListComponent {
       this.issues = data.items;
     })
   }
+// ///////////////////////////////////////////
+
 
   //TODO: Separar esta accion en diferente componente
   search(value: string) {
     console.log(value);
-    if (value && value.length > 3) {
+    setTimeout(() => { 
+
+      if (value && value.length > 3) {
         //TODO:
         this.ghRepos.getData(value).subscribe((data) => {
-          console.log(data.items);
-          // this.repos = data.items;
-
           this.ghReposStore.dispatch(setRepos({ repos: data.items }));
         })
-    }
+      }
+    }, 500)
+    
   }
 
-ngOnItin():void{}
+// ngOnItin(){}
 }

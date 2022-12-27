@@ -6,6 +6,9 @@ import { Repo } from 'src/app/intefaces/issues.inteface';
 export const initialState: Array<Repo> = []
 
 export const reposReducer = createReducer(
-    initialState,
-    on(setRepos, (state, action) => ({ ...state, repos: action.repos }))
-  );
+  initialState,
+  on(setRepos, (state, { repos }) => {
+    console.log(repos, "Reducer log")
+    return repos
+  }),
+);
