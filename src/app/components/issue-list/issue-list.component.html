@@ -14,9 +14,14 @@
 </ul> 
 -->
 <ul>
-    <li *ngFor="let repo of repos">
+    <li *ngFor="let repo of repos$ | async as repos">
+
+        {{repos | json}}
+
          repo id {{ repo.id }} <br>
+         owner name {{repo.owner.login}} <br>
         repo name {{ repo.name }} <br>
-        repos count {{repo.url}}
+        repos url {{repo.url}} <br>
+        repos issues {{repo.open_issues_count}}
     </li>
 </ul>
