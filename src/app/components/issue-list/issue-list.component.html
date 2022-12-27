@@ -3,11 +3,20 @@
 
 <button (click)="getIssues()">Obtener issues</button>
 
-<ul>
+<!-- 
+    <ul>
     <li *ngFor="let issue of issues">
-        <!-- repo id {{ issue.id }} <br> -->
+         repo id {{ issue.id }} <br>
         repo name {{ issue.name }} <br>
         issues count {{issue.open_issues_count}}
-        <!-- {{ issue.created_at }} -->
+        {{ issue.created_at }} 
+    </li>
+</ul> 
+-->
+<ul>
+    <li *ngFor="let repo of repos">
+         repo id {{ repo.id }} <br>
+        repo name {{ repo.name }} <br>
+        repos count {{repo.url}}
     </li>
 </ul>

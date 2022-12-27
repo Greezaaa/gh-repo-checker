@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GhReposService {
+export class GHRepos {
 
-  constructor() { }
+  constructor(
+    private http:HttpClient,
+  ) { }
+
+  getData(value:string):Observable<any>{
+    
+    const url = "https://api.github.com/search/repositories?q=" + value
+
+    return this.http.get<any>(url)
+  }
 }

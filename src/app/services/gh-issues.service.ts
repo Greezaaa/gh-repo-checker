@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GhIssuesService {
+export class GHIssuesService {
 
   constructor(
     private http:HttpClient,
