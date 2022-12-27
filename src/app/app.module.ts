@@ -10,8 +10,8 @@ import { IssueListComponent } from './components/issue-list/issue-list.component
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { StoreModule } from '@ngrx/store';
-// import { reducers } from './states/app.states';
-import { reposReducer } from './states/reducers/repos.reducer';
+import { reducers } from './states/app.states';
+// import { reposReducer } from './states/reducers/repos.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
@@ -28,8 +28,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     HttpClientModule,
     MatPaginatorModule,
-    // StoreModule.forRoot(reducers),
-    StoreModule.forRoot({ repos: reposReducer }),
+    StoreModule.forRoot(reducers),
+    // StoreModule.forRoot({ repos: reposReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],

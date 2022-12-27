@@ -5,7 +5,6 @@ import { GHRepos } from 'src/app/services/gh-repos.service';
 import { Repo } from '../../intefaces/issues.inteface';
 import { Store } from '@ngrx/store';
 import { setRepos } from 'src/app/states/actions/setRepos.action';
-import { reposReducer } from 'src/app/states/reducers/repos.reducer';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-issue-list',

@@ -14,19 +14,16 @@
 </ul> 
 -->
 
-<p *ngIf="repos$ | async as repos ">
-{{repos}}
-</p>
+<!-- <p *ngIf="repos$ | async as repos ">
+{{repos | json}}
+</p> -->
 
-<!-- <ul>
+<ul *ngIf="repos$ | async as repos ">
     <li *ngFor="let repo of repos$ | async as repos">
-
-        {{repos | json}}
-
          repo id {{ repo.id }} <br>
          owner name {{repo.owner.login}} <br>
         repo name {{ repo.name }} <br>
         repos url {{repo.url}} <br>
         repos issues {{repo.open_issues_count}}
     </li>
-</ul> -->
+</ul>
