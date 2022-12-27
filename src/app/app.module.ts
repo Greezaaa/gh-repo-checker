@@ -13,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './states/app.states';
 // import { reposReducer } from './states/reducers/repos.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatPaginatorModule,
     StoreModule.forRoot(reducers),
     // StoreModule.forRoot({ repos: reposReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
-  ],
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    BrowserAnimationsModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })
