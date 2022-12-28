@@ -1,29 +1,44 @@
 <p>issue-list works!</p>
 <input type="text" #inputSearch (keyup)="search(inputSearch.value)" />
 
-<button (click)="getIssues()">Obtener issues</button>
+<button (click)="search(inputSearch.value)">Buscar</button>
+
 
 <!-- 
+    <button (click)="getIssues()">Obtener issues</button>
+
     <ul>
-    <li *ngFor="let issue of issues">
-         repo id {{ issue.id }} <br>
+    <li *ngFor="let issue of issues | paginate:page_size:page_number">
+        repo id {{ issue.id }} <br>
         repo name {{ issue.name }} <br>
         issues count {{issue.open_issues_count}}
-        {{ issue.created_at }} 
+        {{ issue.created_at }}
     </li>
-</ul> 
--->
+</ul> -->
 
 <!-- <p *ngIf="repos$ | async as repos ">
 {{repos | json}}
 </p> -->
 
-<ul *ngIf="repos$ | async as repos ">
-    <li *ngFor="let repo of repos$ | async as repos">
-         repo id {{ repo.id }} <br>
-         owner name {{repo.owner.login}} <br>
-        repo name {{ repo.name }} <br>
-        repos url {{repo.url}} <br>
-        repos issues {{repo.open_issues_count}}
-    </li>
-</ul>
+<div *ngIf="totalRepos > page_size">
+    <mat-paginator 
+    showFirstLastButtons="true"
+    [length]="totalRepos" 
+    [pageSize]="page_size" 
+    [pageSizeOptions]="[5, 10, 25, 100]" 
+    (page)="handlePage($event)"
+    aria-label="Select page">
+    </mat-paginator> 
+</div>
+<div *ngIf="repos$ | async as repos ">
+    <ul *ngFor="let repo of repos | paginate:page_size:page_number, let i = index"  >
+        <li >{{i + 1}}</li>
+        <li >repo id {{repo.id}} <br></li>
+        <li >owner name {{repo.owner.login}} <br></li>
+        <li >owner name {{repo.owner.avatar_url}} <br></li>
+        <li >repo name {{ repo.name }} <br></li>
+        <li >repos url {{repo.url}} <br></li>
+        <li >repos issues {{repo.open_issues_count}}</li>
+    </ul>
+</div>
+
