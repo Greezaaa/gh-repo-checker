@@ -1,1 +1,1 @@
-<p>form-search works!</p>
+<input type="text" #inputSearch (keydown.enter)="getRepository(inputSearch.value)"  [(ngModel)]="searchValue" />

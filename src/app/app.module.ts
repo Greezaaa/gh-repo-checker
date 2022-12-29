@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 //redux
 import { reducers } from './states/app.states';
@@ -21,6 +22,7 @@ import { IssueListComponent } from './components/issue-list/issue-list.component
 import { HeaderComponent } from './components/header/header.component';
 import { FormSearchComponent } from './components/form-search/form-search.component';
 import { PaginatePipe } from './pipes/paginate.pipe';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { PaginatePipe } from './pipes/paginate.pipe';
     FormSearchComponent,
     IssueListComponent,
     PaginatePipe,
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { PaginatePipe } from './pipes/paginate.pipe';
     HttpClientModule,
     MatPaginatorModule,
     MatListModule,
+    FormsModule,
     StoreModule.forRoot(reducers),
     // StoreModule.forRoot({ repos: reposReducer }), // capply this if more then one store
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
