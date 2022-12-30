@@ -4,7 +4,7 @@ import { Repo } from 'src/app/intefaces/issues.inteface';
 import { GHRepos } from 'src/app/services/gh-repos.service';
 import { setRepos } from 'src/app/states/actions/setRepos.action';
 import { searchRepos } from '../../states/actions/searchRepos.action';
-import { SearchResultsComponent } from '../search-results/search-results.component';
+import { SearchResultsComponent } from '../../pages/search-results/search-results.component';
 import { SearchRepos } from 'src/app/services/search-repos.service';
 
 @Component({

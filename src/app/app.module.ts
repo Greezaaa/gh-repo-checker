@@ -1,49 +1,52 @@
 //main core
-import { NgModule, isDevMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, isDevMode } from '@angular/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 import { FormsModule } from '@angular/forms';
 
 //redux
-import { reducers } from './states/app.states';
-// import { reposReducer } from './states/reducers/repos.reducer'; // change to reducers if more then one store
+import { reducers } from './reduxStates/app.states';
 
 //material UI
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
 
 //components
-import { IssueListComponent } from './components/issue-list/issue-list.component';
-import { HeaderComponent } from './components/header/header.component';
+import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { FormSearchComponent } from './components/form-search/form-search.component';
+import { IssueListComponent } from './components/issue-list/issue-list.component';
+import { HeaderComponent } from './pages/header/header.component';
+import { HomeComponent } from './pages/home/home.component';
 import { PaginatePipe } from './pipes/paginate.pipe';
-import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { AppComponent } from './app.component';
+import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
+    SearchResultsComponent,
     FormSearchComponent,
     IssueListComponent,
+    HeaderComponent,
+    HomeComponent,
+    AppComponent,
     PaginatePipe,
-    SearchResultsComponent,
+    RepoInfoComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
+    MatListModule,
     AppRoutingModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatListModule,
-    FormsModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
-    // StoreModule.forRoot({ repos: reposReducer }), // capply this if more then one store
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    BrowserAnimationsModule],
+  ],
   providers: [ ],
   bootstrap: [AppComponent]
 })
