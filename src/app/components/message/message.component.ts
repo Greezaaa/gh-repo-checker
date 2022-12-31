@@ -32,7 +32,6 @@ export class MessageComponent implements OnInit {
   handleLS(lsMSG: any) {
     if (lsMSG !== null) {
       this.alert_object = JSON.parse(lsMSG)
-      console.log(this.alert_object.msg);
     }
   }
 }
