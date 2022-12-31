@@ -32,6 +32,11 @@ export class ResultsComponent {
     this.searchRepos.getData(e).subscribe((data) => {
       this.repositories = data.items
       this.totalRepos = data.items.length
+      const msg = {
+        msg: this.totalRepos,
+        status: true
+      }
+      localStorage.setItem('msg', JSON.stringify(msg))
     })
   }
   ngOnInit() {
@@ -46,6 +51,7 @@ export class ResultsComponent {
           this.router.navigate(['/']);
           return false
         }
+        
         this.getRepositories(searchedValue)
         return true
       });

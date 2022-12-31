@@ -16,7 +16,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 //components
-import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { FormSearchComponent } from './components/form-search/form-search.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -25,18 +24,19 @@ import { AppComponent } from './app.component';
 import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
-    SearchResultsComponent,
     FormSearchComponent,
+    RepoInfoComponent,
+    ResultsComponent,
+    SpinnerComponent,
+    MessageComponent,
     HeaderComponent,
     HomeComponent,
     AppComponent,
     PaginatePipe,
-    RepoInfoComponent,
-    ResultsComponent,
-    SpinnerComponent
   ],
   imports: [
     FormsModule,
