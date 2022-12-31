@@ -19,12 +19,8 @@ export class RepoInfoComponent implements OnInit {
     ) { }
   showInfo(){
     this.RepoInfoService.getData(this.userName!, this.repoName!).subscribe((data) => {
-      console.log( data);
-      
       this.repository = data
       this.repoOwner = data.owner
-      console.log(data.owner.login);
-      
     })
   }
   ngOnInit() {
