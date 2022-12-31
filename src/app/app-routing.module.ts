@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //pages
 import { HomeComponent } from './pages/home/home.component';
+import { ResultsComponent } from './pages/results/results.component';
 import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
-import { SearchResultsComponent } from './pages/search-results/search-results.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'search-results', component: SearchResultsComponent },
+  { path: 'results', component: ResultsComponent },
   { path: 'repo-info', component: RepoInfoComponent },
   { path: '**', redirectTo: '/' }
 ];

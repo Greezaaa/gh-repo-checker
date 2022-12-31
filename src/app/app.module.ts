@@ -14,27 +14,29 @@ import { reducers } from './reduxStates/app.states';
 //material UI
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 //components
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { FormSearchComponent } from './components/form-search/form-search.component';
-import { IssueListComponent } from './components/issue-list/issue-list.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { AppComponent } from './app.component';
 import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
+import { ResultsComponent } from './pages/results/results.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     SearchResultsComponent,
     FormSearchComponent,
-    IssueListComponent,
     HeaderComponent,
     HomeComponent,
     AppComponent,
     PaginatePipe,
     RepoInfoComponent,
+    ResultsComponent,
+    SpinnerComponent
   ],
   imports: [
     FormsModule,
@@ -44,6 +46,7 @@ import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
     HttpClientModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],

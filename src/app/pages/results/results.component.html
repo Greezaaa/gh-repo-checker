@@ -1,3 +1,7 @@
+
+<div *ngIf="totalRepos === 0">
+    <app-spinner></app-spinner>
+</div>
 <div *ngIf="totalRepos > page_size">
     <mat-paginator 
     showFirstLastButtons="true"
@@ -8,8 +12,9 @@
     aria-label="Select page">
     </mat-paginator> 
 </div>
-<div *ngIf="repos$ | async as repos ">
-    <ul *ngFor="let repo of repos | paginate:page_size:page_number"  >
+
+<div *ngIf="repositories">
+    <ul *ngFor="let repo of repositories | paginate:page_size:page_number"  >
         <li >repo id {{repo.id}} <br></li>
         <li >owner name {{repo.owner.login}} <br></li>
         <li >owner name {{repo.owner.avatar_url}} <br></li>
@@ -18,5 +23,3 @@
         <li >repos issues {{repo.open_issues_count}}</li>
     </ul>
 </div>
-
-{{searchedValue}}

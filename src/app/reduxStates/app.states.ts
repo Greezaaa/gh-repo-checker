@@ -1,7 +1,9 @@
 import { reposReducer } from './reducers/repos.reducer'; 
+import { searchedValueReducer } from './reducers/searchedValue.reducer';
 
 
 export const reducers={
 
-    reposState:reposReducer
+    reposState:reposReducer,
+    searchState: searchedValueReducer
 }

@@ -1,11 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Repo } from 'src/app/intefaces/issues.inteface';
-import { GHRepos } from 'src/app/services/gh-repos.service';
-import { setRepos } from 'src/app/states/actions/setRepos.action';
-import { searchRepos } from '../../states/actions/searchRepos.action';
-import { SearchResultsComponent } from '../../pages/search-results/search-results.component';
-import { SearchRepos } from 'src/app/services/search-repos.service';
+import { Router } from '@angular/router';
+import { setSearchedValue } from 'src/app/reduxStates/actions/searchedValue.action';
 
 @Component({
   selector: 'app-form-search',
@@ -17,16 +13,15 @@ export class FormSearchComponent {
   searchValue: string = ""
 
   constructor(
-    private searchRepos: SearchRepos,
-    private ghReposStore: Store<{ reposState: Array<Repo> }>,
-  ) {}
+    private router: Router,
+    private seachedValueStore: Store<{ searchState: String }>
+  ) { }
 
   // searching for repository and saving to store
   getRepository(e: string) {
-    console.log(e, 'this is what I search');
-    this.searchRepos.getData(e).subscribe((data) => {
-      this.ghReposStore.dispatch(setRepos({ repos: data.items }));
-    })
+    this.seachedValueStore.dispatch(setSearchedValue({ searchedValue: e }));
+
     this.searchValue = ""
+    this.router.navigate(['/results']);
   }
 }
