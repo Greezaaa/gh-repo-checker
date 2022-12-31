@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Repo } from '../intefaces/issues.inteface';
+import { Repo } from '../intefaces/searchedRepos.inteface';
 
 @Injectable({
   providedIn: 'root'

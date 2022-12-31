@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Repo } from 'src/app/intefaces/issues.inteface';
+import { Repo } from 'src/app/intefaces/searchedRepos.inteface';
 import { SearchRepos } from 'src/app/services/search-repos.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';

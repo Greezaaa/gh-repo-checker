@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Alert } from 'src/app/intefaces/issues.inteface';
+import { Alert } from 'src/app/intefaces/alert.interface';
 
 @Component({
   selector: 'app-message',

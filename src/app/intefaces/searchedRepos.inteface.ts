@@ -1,7 +1,4 @@
-export interface Alert {
-    msg: string,
-    status: boolean
-}
+
 export interface Owner {
     login: string;
     id: number;
