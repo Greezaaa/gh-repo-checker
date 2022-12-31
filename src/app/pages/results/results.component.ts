@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Repo } from 'src/app/intefaces/searchedRepos.inteface';
-import { SearchRepos } from 'src/app/services/search-repos.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SearchRepos } from 'src/app/services/search-repos.service';
+import { Repo } from 'src/app/intefaces/searchedRepos.inteface';
 
 @Component({
   selector: 'app-results',
