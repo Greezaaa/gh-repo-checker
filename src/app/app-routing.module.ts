@@ -8,7 +8,7 @@ import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'results', component: ResultsComponent },
-  { path: 'repo-info', component: RepoInfoComponent },
+  { path: 'repo-info/:user/:repo', component: RepoInfoComponent },
   { path: '**', redirectTo: '/' }
 ];
 

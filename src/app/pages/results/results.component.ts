@@ -28,7 +28,20 @@ export class ResultsComponent {
     this.page_size = e.pageSize
     this.page_number = e.pageIndex + 1
   }
-  getRepositories(e:string) {
+  handleClick(value: string) {
+    const link = value;
+    const parts = link.split("/");
+
+    const userName = parts[parts.length - 2];  // "DamnWidget"
+    const repoName = parts[parts.length - 1];  // "anaconda"
+
+    console.log(userName);  // "DamnWidget"
+    console.log(repoName);  // "anaconda"
+
+    this.router.navigate([`/repo-info/${userName}/${repoName}`]);
+
+  }
+  getRepositories(e: string) {
     this.searchRepos.getData(e).subscribe((data) => {
       this.repositories = data.items
       this.totalRepos = data.items.length
@@ -42,7 +55,7 @@ export class ResultsComponent {
   ngOnInit() {
     this.store.select<string>(state => state.searchState)
       .subscribe(searchedValue => {
-        if(!searchedValue) {
+        if (!searchedValue) {
           const msg = {
             msg: "Por favor realize la busqueda",
             status: true
@@ -51,7 +64,7 @@ export class ResultsComponent {
           this.router.navigate(['/']);
           return false
         }
-        
+
         this.getRepositories(searchedValue)
         return true
       });

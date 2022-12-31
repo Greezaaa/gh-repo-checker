@@ -23,7 +23,7 @@
         <li >owner name {{repo.owner.login}} <br></li>
         <li >owner name {{repo.owner.avatar_url}} <br></li>
         <li >repo name {{ repo.name }} <br></li>
-        <li >repos url {{repo.url}} <br></li>
+        <li (click)="handleClick(repo.url)">repos url {{repo.url}} <br></li>
         <li >repos issues {{repo.open_issues_count}}</li>
     </ul>
 </div>
