@@ -10,11 +10,14 @@ import { Repo } from 'src/app/interfaces/searchedRepos.interface';
 })
 export class ResultsComponent implements OnInit{
 
+  repositories: Array<Repo>
   constructor(
     private router: Router,
     private store: Store<{ searchState: string }>,
     private searchRepos: SearchRepos,
-  ) { }
+  ) {
+    this.repositories = []
+  }
   handleClick(value: string) {
     const link = value;
     const parts = link.split("/");
@@ -22,25 +25,16 @@ export class ResultsComponent implements OnInit{
     const repoName = parts[parts.length - 1];  
     this.router.navigate([`/repo-info/${userName}/${repoName}`]);
   }
-  getRepositories(e: string) {
-    this.searchRepos.getData(e).subscribe((data) => {
-      console.log(data.items); // log the data object to the console
-      // this.repositories = data.items
+  getRepositories(value: string) {
+    this.searchRepos.getData(value).subscribe((repos) => {
+      this.repositories = repos.items
+      console.log(this.repositories);
+      
     })
   }
   ngOnInit() {
     this.store.select<string>(state => state.searchState)
       .subscribe(searchedValue => {
-        if (!searchedValue) {
-          const msg = {
-            msg: "Pls make a search",
-            status: true
-          }
-          localStorage.setItem('msg', JSON.stringify(msg))
-          this.router.navigate(['/']);
-          return false
-        }
-
         this.getRepositories(searchedValue)
         return true
       });
