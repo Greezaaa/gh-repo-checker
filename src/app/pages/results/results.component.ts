@@ -1,33 +1,20 @@
-import { Component } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { SearchRepos } from 'src/app/services/search-repos.service';
-import { Repo } from 'src/app/intefaces/searchedRepos.inteface';
+import { Repo } from 'src/app/interfaces/searchedRepos.interface';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.scss']
 })
-export class ResultsComponent {
-
-
-  repositories: Array<Repo> = []
-  page_size: number = 5;
-  page_number: number = 1;
-  totalRepos: number = 0;
-  pageSizeOptions: number[] = [3, 5, 10, 25];
+export class ResultsComponent implements OnInit{
 
   constructor(
     private router: Router,
     private store: Store<{ searchState: string }>,
     private searchRepos: SearchRepos,
   ) { }
-  handlePage(e: PageEvent) {
-    this.page_size = e.pageSize
-    this.page_number = e.pageIndex + 1
-  }
   handleClick(value: string) {
     const link = value;
     const parts = link.split("/");
@@ -37,13 +24,8 @@ export class ResultsComponent {
   }
   getRepositories(e: string) {
     this.searchRepos.getData(e).subscribe((data) => {
-      this.repositories = data.items
-      this.totalRepos = data.items.length
-      const msg = {
-        msg: this.totalRepos,
-        status: true
-      }
-      localStorage.setItem('msg', JSON.stringify(msg))
+      console.log(data.items); // log the data object to the console
+      // this.repositories = data.items
     })
   }
   ngOnInit() {
@@ -51,7 +33,7 @@ export class ResultsComponent {
       .subscribe(searchedValue => {
         if (!searchedValue) {
           const msg = {
-            msg: "Por favor realize la busqueda",
+            msg: "Pls make a search",
             status: true
           }
           localStorage.setItem('msg', JSON.stringify(msg))

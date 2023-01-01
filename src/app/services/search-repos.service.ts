@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Repo } from '../intefaces/searchedRepos.inteface';
+import { Repo } from '../interfaces/searchedRepos.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,10 +12,10 @@ export class SearchRepos {
   ) { }
 
   // getData(value:string):Observable<Array<Repo>>{
-  getData(value:string):Observable<any>{
+  getData(value:string):Observable<Repo[]>{
     
     const url = "https://api.github.com/search/repositories?q=" + value
 
-    return this.http.get<Array<Repo>>(url)
+    return this.http.get<Repo[]>(url)
   }
 }
