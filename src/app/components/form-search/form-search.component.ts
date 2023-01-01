@@ -9,7 +9,7 @@ import { setSearchedValue } from 'src/app/store/actions/searchedValue.action';
 })
 export class FormSearchComponent {
 
-  searchValue = ""
+  searchValue = "";
 
   constructor(
     private router: Router,
@@ -20,7 +20,7 @@ export class FormSearchComponent {
   getRepository(e: string) {
     this.searchedValueStore.dispatch(setSearchedValue({ searchedValue: e }));
 
-    this.searchValue = ""
+    this.searchValue = "";
     this.router.navigate(['/results']);
   }
 }

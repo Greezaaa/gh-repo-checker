@@ -15,18 +15,16 @@ import { reducers } from './store/app.states';
 import { FormSearchComponent } from './components/form-search/form-search.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AppComponent } from './app.component';
-import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
-import { ResultsComponent } from './pages/results/results.component';
 import { HeaderComponent } from './components/header/header.component';
+import { RepoComponent } from './pages/repo/repo.component';
 
 @NgModule({
   declarations: [
     FormSearchComponent,
-    RepoInfoComponent,
-    ResultsComponent,
     HeaderComponent,
     HomeComponent,
-    AppComponent
+    AppComponent,
+    RepoComponent
   ],
   imports: [
     FormsModule,

@@ -10,12 +10,11 @@ export class SearchRepos {
   constructor(
     private http:HttpClient,
   ) { }
-
-  // getData(value:string):Observable<Array<Repo>>{
-  getData(value:string):Observable<Repo[]>{
+  
+  getData(value:string):Observable<Array<Repo>>{
     
-    const url = "https://api.github.com/search/repositories?q=" + value
+    const url = "https://api.github.com/search/repositories?q=" + value;
 
-    return this.http.get<Repo[]>(url)
+    return this.http.get<Repo[]>(url);
   }
 }

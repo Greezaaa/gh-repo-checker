@@ -13,7 +13,7 @@ export class RepoInfoService {
 
   // getData(value:string):Observable<Array<Repo>>{
   getData(userName:string, repoName:string):Observable<Array<Repo>>{
-    const url = `https://api.github.com/repos/${userName}/${repoName} `
-    return this.http.get<Array<Repo>>(url)
+    const url = `https://api.github.com/repos/${userName}/${repoName} `;
+    return this.http.get<Array<Repo>>(url);
   }
 }
