@@ -6,12 +6,11 @@ export interface RepoData {
     issuesCount: number
     owner: {
       id: number
-      name: string
+      login: string
       avatar: string
     }
   }
   
-
   export interface RepositoryState {
     url: string
     data: RepoData | null
@@ -22,4 +21,15 @@ export interface RepoData {
       page: number
       lastPage: number
     }
+  }
+
+  export interface RepositoryResponse {
+    id: number
+    name: string
+    owner: {
+      id: number
+      login: string
+      avatar_url: string
+    }
+    open_issues_count: number
   }

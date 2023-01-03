@@ -1,4 +1,4 @@
-import { RepositoryState } from "src/app/interfaces/repo"
+import { RepositoryState } from "src/app/interfaces/repo.interface"
 import { createReducer, on } from '@ngrx/store';
 import { setUrl, receiveData, receiveIssues, setIssuesPage } from "../actions/repository.action";
 

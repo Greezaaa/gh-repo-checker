@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { RepoData } from '../../interfaces/repo';
+import { RepoData } from '../../interfaces/repo.interface';
 import { IssuesList } from '../../interfaces/issue.interface';
 
 
