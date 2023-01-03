@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { RepoData, RepositoryResponse } from '../interfaces/repo.interface'
-import { Issue, IssuesList } from '../interfaces/issue.interface'
+import { IssuesList, IssuesResponse } from '../interfaces/issue.interface'
 
 const ROOT_API_URL = 'https://api.github.com/'
 
-type IssuesResponse = Array<Issue>
+
 @Injectable({
   providedIn: 'root'
 })

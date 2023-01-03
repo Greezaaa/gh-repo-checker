@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { RepoComponent } from './repo.component'
+import { ResultsComponent } from './results.component'
 
-describe('RepoComponent', () => {
-  let component: RepoComponent
-  let fixture: ComponentFixture<RepoComponent>
+describe('ResultsComponent', () => {
+  let component: ResultsComponent
+  let fixture: ComponentFixture<ResultsComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RepoComponent ]
+      declarations: [ ResultsComponent ]
     })
     .compileComponents()
 
-    fixture = TestBed.createComponent(RepoComponent)
+    fixture = TestBed.createComponent(ResultsComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

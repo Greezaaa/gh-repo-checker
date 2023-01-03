@@ -1,8 +1,17 @@
 export interface Issue {
-    name: string
-    // TODO
+  id: number
+  url: string
+  body: string
+  title: string
+  author_association: string
+  user: {
+    id: number
+    avatar_url: string
+    login: string
   }
+  // TODO:
+}
 
-  export type IssuesList = Array<{
-    name: string
-  }>
+export type IssuesList = Array<Issue>
+
+export type IssuesResponse = Array<Issue>

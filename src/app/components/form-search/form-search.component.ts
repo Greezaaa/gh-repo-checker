@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { receiveData, receiveIssues, setUrl } from 'src/app/store/actions/repository.action'
 import { AppStore } from 'src/app/store/app.states'
 import { RepositoryService } from '../../services/repository.service'
+import { RepoData } from 'src/app/interfaces/repo.interface'
 const ISSUES_PER_PAGE = 30
 @Component({
   selector: 'app-form-search',
@@ -31,7 +32,7 @@ export class FormSearchComponent {
     return { owner, repo }
   }
 
-  getRepository(repositoryUrl: string) {
+  async getRepository(repositoryUrl: string):Promise<void>{
     this.repositoriesStore.dispatch(setUrl({ url: repositoryUrl }))
     const { owner, repo } = this.getRepoDataFromUrl(repositoryUrl)
 
@@ -45,7 +46,7 @@ export class FormSearchComponent {
     this.repositoryService.fetchIssues(owner, repo, 1, (issues) => {
       this.repositoriesStore.dispatch(receiveIssues ({ issues }))
     })
-    // this.searchedUrl = "";
-    // this.router.navigate(['/results']);
+    this.searchedUrl = ""
+    await this.router.navigate(['/results'])
   }
 }

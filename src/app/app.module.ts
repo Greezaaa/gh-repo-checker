@@ -16,7 +16,7 @@ import { FormSearchComponent } from './components/form-search/form-search.compon
 import { HomeComponent } from './pages/home/home.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './components/header/header.component'
-import { RepoComponent } from './pages/repo/repo.component'
+import { ResultsComponent } from './pages/results/results.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { RepoComponent } from './pages/repo/repo.component'
     HeaderComponent,
     HomeComponent,
     AppComponent,
-    RepoComponent
+    ResultsComponent
   ],
   imports: [
     FormsModule,
