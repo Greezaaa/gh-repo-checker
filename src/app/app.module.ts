@@ -1,22 +1,22 @@
 //main core
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, isDevMode } from '@angular/core';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgModule, isDevMode } from '@angular/core'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { AppRoutingModule } from './app-routing.module'
+import { HttpClientModule } from '@angular/common/http'
+import { BrowserModule } from '@angular/platform-browser'
+import { StoreModule } from '@ngrx/store'
+import { FormsModule } from '@angular/forms'
 
 //redux
-import { reducers } from './store/app.states';
+import { reducers } from './store/app.states'
 
 //components
-import { FormSearchComponent } from './components/form-search/form-search.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { RepoComponent } from './pages/repo/repo.component';
+import { FormSearchComponent } from './components/form-search/form-search.component'
+import { HomeComponent } from './pages/home/home.component'
+import { AppComponent } from './app.component'
+import { HeaderComponent } from './components/header/header.component'
+import { RepoComponent } from './pages/repo/repo.component'
 
 @NgModule({
   declarations: [

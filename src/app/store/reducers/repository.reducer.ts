@@ -1,6 +1,6 @@
-import { RepositoryState } from "src/app/interfaces/repo.interface";
-import { createReducer, on } from '@ngrx/store';
-import { setUrl, receiveData, receiveIssues, setIssuesPage } from "../actions/repository.action";
+import { RepositoryState } from "src/app/interfaces/repo.interface"
+import { createReducer, on } from '@ngrx/store'
+import { setUrl, receiveData, receiveIssues, setIssuesPage } from "../actions/repository.action"
 
 const initialState: RepositoryState = {
     url: '',
@@ -12,7 +12,7 @@ const initialState: RepositoryState = {
         page: 0,
         lastPage: 0
     }
-};
+}
 
 export const RepositoryReducer = createReducer(
     initialState,
@@ -21,7 +21,7 @@ export const RepositoryReducer = createReducer(
         ...state,
         url,
         isLoading: true
-      };
+      }
     }),
     on(receiveData, (state, { repository, issuesLastPage }) => {
         return {
@@ -34,7 +34,7 @@ export const RepositoryReducer = createReducer(
                 page: 0,
                 lastPage: issuesLastPage
             }
-        };
+        }
     }),
     on(receiveIssues, (state, { issues }) => ({
         ...state,
@@ -52,6 +52,6 @@ export const RepositoryReducer = createReducer(
             page
         }
     }))
-);
+)
 
-export { RepositoryState };
+export { RepositoryState }
