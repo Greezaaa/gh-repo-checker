@@ -11,7 +11,7 @@ const ISSUES_PER_PAGE = 30
 })
 export class FormSearchComponent {
   page: number = 1
-  searchedUrl: string = ""
+  searchedUrl: string = "https://github.com/facebook/react"
   constructor(
     private router: Router,
     private readonly repositoriesStore: Store<AppStore>,

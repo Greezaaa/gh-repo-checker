@@ -4,6 +4,8 @@ export interface Issue {
   body: string
   title: string
   author_association: string
+  created_at:string
+
   user: {
     id: number
     avatar_url: string
