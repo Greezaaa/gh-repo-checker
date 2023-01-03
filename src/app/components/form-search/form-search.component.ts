@@ -16,12 +16,29 @@ export class FormSearchComponent {
     private router: Router,
     private readonly repositoriesStore: Store<AppStore>,
   ) { }
-
-
-  getRepository(repositoryUrl: string) {
-    this.repositoriesStore.dispatch(setUrl({ url: repositoryUrl }))
-    console.log(repositoryUrl);
+  getRepoDataFromUrl(repositoryUrl:string): {owner: string, repo: string} {
+    let owner = ""
+    let repo = ""
     
+    repositoryUrl = repositoryUrl.replace(/ /g, '')
+    const regex = /^https:\/\/github\.com\/[0-9a-zA-Z_-]+\/[0-9a-zA-Z_-]+\/?$/
+    
+    if(repositoryUrl.search(regex.toString()) === -1){
+      // getting data from introduced url
+      const parts = repositoryUrl.split('/')
+      owner = parts[parts.length - 2]
+      repo = parts[parts.length - 1] 
+      console.log(owner, repo);
+    }
+    return { owner, repo }
+  }
+  getRepository(repositoryUrl: string) {
+    // replace spaces and validate url
+    
+    this.repositoriesStore.dispatch(setUrl({ url: repositoryUrl }))
+
+    const { owner, repo } = this.getRepoDataFromUrl(repositoryUrl)
+
     this.searchedUrl = "";
     // this.router.navigate(['/results']);
   }
