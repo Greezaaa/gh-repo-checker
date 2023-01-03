@@ -16,7 +16,8 @@ import { FormSearchComponent } from './components/form-search/form-search.compon
 import { HomeComponent } from './pages/home/home.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './components/header/header.component'
-import { ResultsComponent } from './pages/results/results.component'
+import { ResultsComponent } from './pages/results/results.component';
+import { IssuesComponent } from './components/issues/issues.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ResultsComponent } from './pages/results/results.component'
     HeaderComponent,
     HomeComponent,
     AppComponent,
-    ResultsComponent
+    ResultsComponent,
+    IssuesComponent
   ],
   imports: [
     FormsModule,

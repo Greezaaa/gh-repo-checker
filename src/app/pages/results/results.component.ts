@@ -2,14 +2,13 @@ import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { RepoData } from 'src/app/interfaces/repo.interface'
 import { AppStore } from 'src/app/store/app.states'
-import { IssuesList } from '../../interfaces/issue.interface'
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html'
 })
 export class ResultsComponent {
-  issues: IssuesList = []
+
   repositories$: RepoData = {
     id: 0,
     name: '',
@@ -36,12 +35,6 @@ export class ResultsComponent {
         }
         this.isLoading$ = isLoading
       }
-    )
-    this.repositoriesStore.select(state => state.repository.issues).subscribe(
-    (data => {
-      console.log(data)
-      this.issues = data.list
-    })
     )
   }
 }

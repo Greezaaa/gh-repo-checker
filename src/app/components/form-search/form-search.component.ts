@@ -10,8 +10,8 @@ const ISSUES_PER_PAGE = 30
   templateUrl: './form-search.component.html',
 })
 export class FormSearchComponent {
-
-  searchedUrl = ""
+  page: number = 1
+  searchedUrl: string = ""
   constructor(
     private router: Router,
     private readonly repositoriesStore: Store<AppStore>,
@@ -42,7 +42,7 @@ export class FormSearchComponent {
       this.repositoriesStore.dispatch(receiveData({ repository, issuesLastPage }))
     })
 
-    this.repositoryService.fetchIssues(owner, repo, 1, (issues) => {
+    this.repositoryService.fetchIssues(owner, repo, this.page, (issues) => {
       this.repositoriesStore.dispatch(receiveIssues ({ issues }))
     })
     this.searchedUrl = ""

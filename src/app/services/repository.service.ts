@@ -52,7 +52,7 @@ export class RepositoryService {
   fetchIssues(
     owner: string,
     repo: string,
-    page: number,
+    page: number = 1,
     onSuccess: (issues: IssuesList) => void
   ): void {
     const url = `${ROOT_API_URL}repos/${owner}/${repo}/issues?page=${page}`

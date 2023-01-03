@@ -1,0 +1,12 @@
+<p>issues works!</p>
+<ul *ngFor="let issue of issues">
+    <!-- <li>{{issue | json}}</li> -->
+    <li>{{issue.id}}</li>
+    <li>{{issue.title}}</li>
+    <li>{{issue.author_association}}</li>
+    <li>{{issue.user.login}}</li>
+    <li>{{issue.url}}</li>
+    <li>
+        <pre>{{issue.body}}</pre>
+    </li>
+</ul>
