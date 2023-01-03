@@ -1,4 +1,4 @@
-import { RepositoryReducer, RepositoryState } from './reducers/repository.reducer'
+import { RepositoryReducer, RepositoryState } from './reducers/repository.reducer';
 
 export interface AppStore {
     repository: RepositoryState
@@ -6,4 +6,4 @@ export interface AppStore {
 
 export const reducers = {
   repository: RepositoryReducer
-}
+};

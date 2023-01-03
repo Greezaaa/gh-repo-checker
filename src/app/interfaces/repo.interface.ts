@@ -1,4 +1,4 @@
-import { Issue } from './issue.interface'
+import { Issue } from './issue.interface';
 
 export interface RepoData {
     id: number
