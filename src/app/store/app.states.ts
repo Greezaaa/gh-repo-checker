@@ -1,4 +1,9 @@
-import { searchedValueReducer } from './reducers/searchedValue.reducer';
-export const reducers={
-    searchState: searchedValueReducer
-};
+import { RepositoryReducer, RepositoryState } from './reducers/repository.reducer'
+
+export interface AppStore {
+    repository: RepositoryState
+  }
+
+export const reducers = {
+  repository: RepositoryReducer
+}

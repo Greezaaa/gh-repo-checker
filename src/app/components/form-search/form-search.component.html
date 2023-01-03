@@ -1,1 +1,5 @@
-<input type="text" #inputSearch (keydown.enter)="getRepository(inputSearch.value)" />
+<input type="text" 
+#inputSearch 
+(keydown.enter)="getRepository(inputSearch.value)" 
+[(ngModel)]="searchedUrl"
+/>

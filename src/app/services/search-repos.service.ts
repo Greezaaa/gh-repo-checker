@@ -5,7 +5,7 @@ import { Repo } from '../interfaces/searchedRepos.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class SearchRepos {
+export class SearchReposService {
 
   constructor(
     private http:HttpClient,

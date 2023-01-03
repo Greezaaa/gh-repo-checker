@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { setSearchedValue } from 'src/app/store/actions/searchedValue.action';
+import { setUrl } from 'src/app/store/actions/repository.action';
+import { AppStore } from 'src/app/store/app.states';
 
 @Component({
   selector: 'app-form-search',
@@ -9,18 +10,19 @@ import { setSearchedValue } from 'src/app/store/actions/searchedValue.action';
 })
 export class FormSearchComponent {
 
-  searchValue = "";
+  searchedUrl = "";
 
   constructor(
     private router: Router,
-    private searchedValueStore: Store<{ searchState: string }>
+    private readonly repositoriesStore: Store<AppStore>,
   ) { }
 
-  // searching for repository and saving to store
-  getRepository(e: string) {
-    this.searchedValueStore.dispatch(setSearchedValue({ searchedValue: e }));
 
-    this.searchValue = "";
-    this.router.navigate(['/results']);
+  getRepository(repositoryUrl: string) {
+    this.repositoriesStore.dispatch(setUrl({ url: repositoryUrl }))
+    console.log(repositoryUrl);
+    
+    this.searchedUrl = "";
+    // this.router.navigate(['/results']);
   }
 }
