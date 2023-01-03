@@ -4,7 +4,6 @@ import { Router } from '@angular/router'
 import { receiveData, receiveIssues, setUrl } from 'src/app/store/actions/repository.action'
 import { AppStore } from 'src/app/store/app.states'
 import { RepositoryService } from '../../services/repository.service'
-import { RepoData } from 'src/app/interfaces/repo.interface'
 const ISSUES_PER_PAGE = 30
 @Component({
   selector: 'app-form-search',
