@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { AppStore } from 'src/app/store/app.states'
 import { RepositoryService } from '../../services/repository.service'
 import { receiveIssues, setIssuesPage } from 'src/app/store/actions/repository.action'
+import { environment } from 'src/environments/environment.prod'
+
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html'
 })
 export class PaginatorComponent {
+  ISSUES_PER_PAGE = environment.ISSUES_PER_PAGE
   pages: number[] = []
-  ISSUES_PER_PAGE: number = 30
-  repoUrl: string = ""
-  issuesCount: number = 0
-  actualPage: number = 0
-  lastPage: number = 0
+  repoUrl = ""
+  issuesCount = 0
+  actualPage = 0
+  lastPage = 0
   constructor(
     private readonly repositoriesStore: Store<AppStore>,
     private readonly repositoryService: RepositoryService
@@ -31,10 +33,10 @@ export class PaginatorComponent {
         }
         if (data.issues?.lastPage !== 0) {
           for (let i = 1; i <= this.lastPage / this.ISSUES_PER_PAGE; i++) {
-            this.pages.push(i);
+            this.pages.push(i)
             
           }
-          console.log(this.pages);
+          console.log(this.pages)
           
         }
       }

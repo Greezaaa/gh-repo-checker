@@ -1,17 +1,18 @@
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { Router } from '@angular/router'
-import { receiveData, receiveIssues, setIssuesPage, setUrl } from 'src/app/store/actions/repository.action'
+import { receiveData, receiveIssues, setUrl } from 'src/app/store/actions/repository.action'
 import { AppStore } from 'src/app/store/app.states'
-import { RepositoryService } from '../../services/repository.service'
-const ISSUES_PER_PAGE = 5
+import { RepositoryService } from '../../services/repository.service';
+import { environment } from 'src/environments/environment.prod';
+const ISSUES_PER_PAGE = environment.ISSUES_PER_PAGE
 const actualPage = 1
 @Component({
   selector: 'app-form-search',
   templateUrl: './form-search.component.html',
 })
 export class FormSearchComponent {
-  searchedUrl: string = "https://github.com/facebook/react"
+  searchedUrl = "https://github.com/facebook/react"
   constructor(
     private router: Router,
     private readonly repositoriesStore: Store<AppStore>,

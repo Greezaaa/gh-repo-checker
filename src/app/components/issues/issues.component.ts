@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { AppStore } from 'src/app/store/app.states'
-import { Issue, IssuesList } from '../../interfaces/issue.interface'
+import { IssuesList } from '../../interfaces/issue.interface'
 @Component({
   selector: 'app-issues',
   templateUrl: './issues.component.html'

@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { RepoData, RepositoryResponse } from '../interfaces/repo.interface'
 import { IssuesList, IssuesResponse } from '../interfaces/issue.interface'
+import { environment } from 'src/environments/environment.prod' 
 
-const ROOT_API_URL = 'https://api.github.com/'
-
+const ROOT_API_URL = environment.ROOT_API_URL
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +56,7 @@ export class RepositoryService {
   fetchIssues(
     owner: string,
     repo: string,
-    page: number = 1,
+    page = 1,
     onSuccess: (issues: IssuesList) => void
   ): void {
     const url = `${ROOT_API_URL}repos/${owner}/${repo}/issues?page=${page}`

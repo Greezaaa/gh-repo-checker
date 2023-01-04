@@ -16,8 +16,8 @@ import { FormSearchComponent } from './components/form-search/form-search.compon
 import { HomeComponent } from './pages/home/home.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './components/header/header.component'
-import { ResultsComponent } from './pages/results/results.component';
-import { IssuesComponent } from './components/issues/issues.component';
+import { ResultsComponent } from './pages/results/results.component'
+import { IssuesComponent } from './components/issues/issues.component'
 import { PaginatorComponent } from './components/paginator/paginator.component'
 
 @NgModule({
