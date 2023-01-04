@@ -26,10 +26,6 @@ export class ResultsComponent {
   ) {
     this.repositoriesStore.select(state => state.repository).subscribe(
       ({ data, isLoading }) => {
-
-        console.log(data, 'check this data')
-        console.log(isLoading, 'loading status')
-
         if (data !== null) {
           this.repositories$ = data
         }

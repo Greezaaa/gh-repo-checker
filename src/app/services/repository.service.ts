@@ -15,25 +15,30 @@ export class RepositoryService {
   constructor(
     private readonly http: HttpClient
   ) { }
-
+  getRepoDataFromUrl(repositoryUrl:string): {owner: string, repo: string} {
+    let owner = ""
+    let repo = ""
+    repositoryUrl = repositoryUrl.replace(/ /g, '')
+    const regex = /^https:\/\/github\.com\/[0-9a-zA-Z_-]+\/[0-9a-zA-Z_-]+\/?$/
+    if(repositoryUrl.search(regex.toString()) === -1){
+      const parts = repositoryUrl.split('/')
+      owner = parts[parts.length - 2]
+      repo = parts[parts.length - 1] 
+    }
+    return { owner, repo }
+  }
   fetchRepository(
     owner: string,
     repo: string,
     onSuccess: (data: RepoData) => void): void {
     const url = `${ROOT_API_URL}repos/${owner}/${repo}`
-    // const url = `${ROOT_API_URL}search/repositories?q=${owner}/${repo}`
-
-    console.log(url)
-
+    
     this.http.get<RepositoryResponse>(url, {
-
       // TODO: add header with token if needed
       // headers: {
       //   Authorization: 'Bearer ' + GITHUB_TOKEN
       // }
     }).subscribe((data): void => {
-      console.log(data)
-
       const repository = {
         id: data.id,
         name: data.name,
@@ -45,7 +50,6 @@ export class RepositoryService {
         }
       }
       onSuccess(repository)
-      console.log(repository)
     })
   }
 

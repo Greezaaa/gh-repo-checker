@@ -1,0 +1,11 @@
+<p>paginator works!</p>
+<p *ngIf="repoUrl">{{repoUrl}}</p>
+<p *ngIf="actualPage">{{actualPage}}</p>
+<p *ngIf="issuesCount">{{issuesCount}}</p>
+<p *ngIf="lastPage">{{lastPage}}</p>
+<p *ngIf="ISSUES_PER_PAGE">{{ISSUES_PER_PAGE}}</p>
+
+
+    <div *ngFor="let page of pages" style="display:inline-block">
+      <button (click)="changePage(page)">{{page}}</button>
+    </div>

@@ -13,7 +13,6 @@ export class IssuesComponent {
   ) {
     this.repositoriesStore.select(state => state.repository.issues).subscribe(
       (data => {
-        console.log(data)
         this.issues = data.list
       })
     )

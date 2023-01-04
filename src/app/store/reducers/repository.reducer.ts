@@ -23,7 +23,7 @@ export const RepositoryReducer = createReducer(
         isLoading: true
       }
     }),
-    on(receiveData, (state, { repository, issuesLastPage }) => {
+    on(receiveData, (state, { repository, issuesLastPage, page }) => {
         return {
             ...state,
             isLoading: false,
@@ -31,7 +31,7 @@ export const RepositoryReducer = createReducer(
             issues: {
                 isLoading: true,
                 list: [],
-                page: 0,
+                page,
                 lastPage: issuesLastPage
             }
         }

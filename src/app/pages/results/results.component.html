@@ -1,9 +1,9 @@
 <p>results works!</p>
+<app-paginator></app-paginator>
 
 <div *ngIf="isLoading$ === true; else results">
     <p>pagina esta cagando!</p>
 </div>
-
 <ng-template #results>
     <div *ngIf="repositories$ as repo">
         <ul>

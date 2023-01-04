@@ -13,6 +13,7 @@ export const receiveData = createAction(
     '[Repository] Receive data', props<{
         repository: RepoData
         issuesLastPage: number
+        page: number
     }>()
 )
 
