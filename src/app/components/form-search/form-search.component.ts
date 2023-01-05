@@ -4,7 +4,7 @@ import { Router } from '@angular/router'
 
 import { receiveData, receiveIssues, setUrl } from 'src/app/store/actions/repository.action'
 import { AppStore } from 'src/app/store/app.states'
-import { RepositoryService } from '../../services/repository.service';
+import { RepositoryService } from '../../services/repository.service'
 import { ISSUES_PER_PAGE } from 'src/app/config'
 
 @Component({
@@ -34,9 +34,7 @@ export class FormSearchComponent {
     this.repositoryService.fetchIssues(owner, repo, this.actualPage, (issues) => {
       this.repositoriesStore.dispatch(receiveIssues({ issues }))
     })
-
-
-
+    
     this.searchedUrl = ""
     await this.router.navigate(['/results'])
   }

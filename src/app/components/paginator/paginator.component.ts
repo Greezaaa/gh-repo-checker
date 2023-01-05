@@ -5,6 +5,7 @@ import { AppStore } from 'src/app/store/app.states'
 import { RepositoryService } from '../../services/repository.service'
 import { receiveIssues, setIssuesPage } from 'src/app/store/actions/repository.action'
 import { ISSUES_PER_PAGE } from 'src/app/config'
+
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html'
@@ -12,38 +13,32 @@ import { ISSUES_PER_PAGE } from 'src/app/config'
 export class PaginatorComponent {
   issues_per_page = ISSUES_PER_PAGE
   pages: number[] = []
-  repoUrl:string = ""
-  issuesCount:number = 0
-  currentPage:number = 0
-  lastPage:number = 0
-  isLoading:boolean = false
+  repoUrl = ""
+  issuesCount = 0
+  currentPage = 0
+  lastPage = 0
+  isLoading = false
+  
   constructor(
     private readonly repositoriesStore: Store<AppStore>,
     private readonly repositoryService: RepositoryService
   ) {
     this.repositoriesStore
-    .select(state => state.repository.issues.isLoading)
-    .subscribe((isLoading) => {this.isLoading = isLoading})
+      .select(state => state.repository.issues.isLoading)
+      .subscribe((isLoading) => { this.isLoading = isLoading })
 
     this.repositoriesStore.select(state => state.repository).subscribe(
-      (data) => {
+      (repository) => {
+        if (repository.data === null) return
 
-        if (data.data?.issuesCount !== undefined) {
-          this.issuesCount = data.data?.issuesCount
-          this.repoUrl = data.url
-        }
-        if (data.issues?.page !== undefined) {
-          this.currentPage = data.issues?.page
-          this.lastPage = data.issues?.lastPage
-        }
-        if (data.issues?.lastPage !== 0) {
-          this.pages = []
-          for (let i = 1; i <= this.lastPage; i++) {
-            this.pages.push(i)
+        this.issuesCount = repository.data.issuesCount
+        this.repoUrl = repository.url
+        this.currentPage = repository.issues.page
+        this.lastPage = repository.issues.lastPage
+        this.pages = []
 
-          }
-          console.log(this.pages)
-
+        for (let i = 1; i <= this.lastPage; i++) {
+          this.pages.push(i)
         }
       }
     )
