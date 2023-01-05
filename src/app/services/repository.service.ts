@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { RepoData, RepositoryResponse } from '../interfaces/repo.interface'
 import { IssuesList, IssuesResponse } from '../interfaces/issue.interface'
-import { environment } from 'src/environments/environment.prod' 
+import { ROOT_API_URL } from '../config'
 
-const ROOT_API_URL = environment.ROOT_API_URL
+
 
 @Injectable({
   providedIn: 'root'
