@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store'
 import { AppStore } from 'src/app/store/app.states'
 import { RepositoryService } from '../../services/repository.service'
 import { receiveIssues, setIssuesPage } from 'src/app/store/actions/repository.action'
-import { ISSUES_PER_PAGE } from 'src/app/config'
+import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
 
 @Component({
   selector: 'app-paginator',
@@ -47,9 +47,13 @@ export class PaginatorComponent {
   async changePage(page: number) {
     this.currentPage = page
     this.repositoriesStore.dispatch(setIssuesPage({ page }))
-    const { owner, repo } = this.repositoryService.getRepoDataFromUrl(this.repoUrl)
-    this.repositoryService.fetchIssues(owner, repo, page, (issues) => {
-      this.repositoriesStore.dispatch(receiveIssues({ issues }))
-    })
+    
+    const repoUrl = getRepoDataFromUrl(this.repoUrl)
+    if (repoUrl) {
+      const { owner, repo } = repoUrl
+      this.repositoryService.fetchIssues(owner, repo, page, (issues) => {
+        this.repositoriesStore.dispatch(receiveIssues({ issues }))
+      })
+    } 
   }
 }

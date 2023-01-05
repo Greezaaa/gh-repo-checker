@@ -15,18 +15,7 @@ export class RepositoryService {
   constructor(
     private readonly http: HttpClient
   ) { }
-  getRepoDataFromUrl(repositoryUrl:string): {owner: string, repo: string} {
-    let owner = ""
-    let repo = ""
-    repositoryUrl = repositoryUrl.replace(/ /g, '')
-    const regex = /^https:\/\/github\.com\/[0-9a-zA-Z_-]+\/[0-9a-zA-Z_-]+\/?$/
-    if(repositoryUrl.search(regex.toString()) === -1){
-      const parts = repositoryUrl.split('/')
-      owner = parts[parts.length - 2]
-      repo = parts[parts.length - 1] 
-    }
-    return { owner, repo }
-  }
+
   fetchRepository(
     owner: string,
     repo: string,

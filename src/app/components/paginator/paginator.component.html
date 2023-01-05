@@ -17,10 +17,10 @@
 
 <div *ngIf="currentPage > 0">
   <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
-  <span>pagina actual {{currentPage}}</span>
+  <span>Pagina actual {{currentPage}}</span>
   
   <select #cricket (change)="changePage(+cricket.value)">
-    <option value="default" disabled selected>pagina actual {{currentPage}}</option>
+    <option value="default" disabled selected>Pagina actual {{currentPage}}</option>
     <option *ngFor="let page of pages" [value]="page" [disabled]="currentPage === page">
       {{page}}
     </option>
