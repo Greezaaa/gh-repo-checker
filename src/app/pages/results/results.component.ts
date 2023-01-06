@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { RepoData } from 'src/app/interfaces/repo.interface'
 import { AppStore } from 'src/app/store/app.states'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -31,9 +32,13 @@ export class ResultsComponent {
 
   constructor(
     private readonly repositoriesStore: Store<AppStore>,
+    private router: Router
   ) {
     this.repositoriesStore.select(state => state.repository).subscribe(
-      ({ data, isLoading }) => {
+      ({ data, isLoading, url }) => {
+        if (url === '') {
+          this.router.navigate(['/'])
+        }
         if (data !== null) {
           this.repositories$ = data
         }

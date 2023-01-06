@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component'
 import { ResultsComponent } from './pages/results/results.component'
 import { IssuesComponent } from './components/issues/issues.component'
 import { PaginatorComponent } from './components/paginator/paginator.component'
+import { SpinnerComponent } from './components/spinner/spinner.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component'
     AppComponent,
     ResultsComponent,
     IssuesComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    SpinnerComponent
   ],
   imports: [
     FormsModule,

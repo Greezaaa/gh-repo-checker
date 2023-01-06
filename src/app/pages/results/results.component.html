@@ -1,7 +1,6 @@
-<p>results works!</p>
 <app-paginator></app-paginator>
-<div *ngIf="isLoading$ === true; else results">
-    <p>pagina esta cagando!</p>
+<div *ngIf="isLoading$ === false; else results">
+    <app-spinner></app-spinner>
 </div>
 <ng-template #results>
     <div *ngIf="repositories$ as repo">
@@ -9,7 +8,7 @@
             <div><h3>{{repo.name}}</h3> </div>
             <div><span>{{repo.id}}</span></div>
             <div><span>{{repo.issuesCount}}</span></div>
-            <div clas="repo_owner">
+            <div class="repo_owner">
                 <div><h4>{{repo.owner.login}} <span>{{repo.owner.id}}</span>  </h4></div>
                 <div><img src="{{repo.owner.avatar_url}}" alt="Owner avatar" width="30"></div>
             </div>

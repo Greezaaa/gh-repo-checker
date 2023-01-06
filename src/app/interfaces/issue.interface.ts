@@ -1,9 +1,7 @@
-import { SafeHtml } from "@angular/platform-browser"
-
 export interface Issue {
   id: number
   html_url: string
-  body: SafeHtml
+  body: string,
   title: string
   author_association: string
   state: string
