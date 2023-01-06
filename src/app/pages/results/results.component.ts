@@ -12,11 +12,19 @@ export class ResultsComponent {
   repositories$: RepoData = {
     id: 0,
     name: '',
+    description: '',
+    created_at: '',
+    git_url: '',
+    homepage: '',
+    language: '',
+    visibility: '',
+    private: false,
+    full_name: '',
     issuesCount: 0,
     owner: {
       id: 0,
       login: '',
-      avatar: ''
+      avatar_url: '',
     }
   }
   isLoading$ = false

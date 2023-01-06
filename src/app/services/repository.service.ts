@@ -21,21 +21,39 @@ export class RepositoryService {
     repo: string,
     onSuccess: (data: RepoData) => void): void {
     const url = `${ROOT_API_URL}repos/${owner}/${repo}`
-    
+
     this.http.get<RepositoryResponse>(url, {
       // TODO: add header with token if needed
       // headers: {
       //   Authorization: 'Bearer ' + GITHUB_TOKEN
       // }
     }).subscribe((data): void => {
+      // const repository = {
+      //   id: data.id,
+      //   name: data.name,
+      //   issuesCount: data.open_issues_count,
+      //   owner: {
+      //     id: data.owner.id,
+      //     login: data.owner.login,
+      //     avatar: data.owner.avatar_url
+      //   }
+      // }
       const repository = {
         id: data.id,
         name: data.name,
+        description: data.description,
+        created_at: data.created_at,
+        git_url: data.git_url,
+        homepage: data.homepage,
+        language: data.language,
+        visibility: data.visibility,
+        private: data.private,
+        full_name: data.full_name,
         issuesCount: data.open_issues_count,
         owner: {
           id: data.owner.id,
           login: data.owner.login,
-          avatar: data.owner.avatar_url
+          avatar_url: data.owner.avatar_url
         }
       }
       onSuccess(repository)
