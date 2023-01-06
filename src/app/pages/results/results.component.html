@@ -1,5 +1,5 @@
 <app-paginator></app-paginator>
-<div *ngIf="isLoading$ === false; else results">
+<div *ngIf="isLoading$ === true; else results">
     <app-spinner></app-spinner>
 </div>
 <ng-template #results>
