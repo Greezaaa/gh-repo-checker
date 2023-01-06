@@ -1,5 +1,2 @@
-<input type="text" 
-#inputSearch 
-(keydown.enter)="getRepository(inputSearch.value)" 
-[(ngModel)]="searchedUrl"
-/>
+<input type="text" class="p-3 w-full focus:outline-none focus:border-purple-300" #inputSearch (keydown.enter)="getRepository(inputSearch.value)" [(ngModel)]="searchedUrl"
+    placeholder="https://github.com/{owner}/{repo}" />

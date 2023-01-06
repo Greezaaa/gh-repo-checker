@@ -7,4 +7,6 @@ import { Component } from '@angular/core'
 })
 export class AppComponent {
   title = 'gh_issues_api_reader'
+
+
 }

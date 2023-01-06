@@ -14,7 +14,7 @@ import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
 export class FormSearchComponent {
   issues_per_page = ISSUES_PER_PAGE
   currentPage = 1
-  searchedUrl = "https://github.com/facebook/react"
+  searchedUrl = ""
   constructor(
     private router: Router,
     private readonly repositoriesStore: Store<AppStore>,
