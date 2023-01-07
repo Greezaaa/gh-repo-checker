@@ -2,6 +2,11 @@ import { createAction, props } from '@ngrx/store'
 import { RepoData } from '../../interfaces/repo.interface'
 import { IssuesList } from '../../interfaces/issue.interface'
 
+export const errorCheck = createAction(
+    '[Repository] Error check', props<{
+        ok: boolean
+    }>()
+)
 
 export const setUrl = createAction(
     '[Repository] Set url', props<{

@@ -24,6 +24,7 @@ export interface RepositoryState {
   url: string
   data: RepoData | null
   isLoading: boolean
+  ok: boolean
   issues: {
     isLoading: boolean
     list: Issue[]

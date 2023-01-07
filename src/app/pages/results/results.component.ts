@@ -35,10 +35,10 @@ export class ResultsComponent {
     private router: Router
   ) {
     this.repositoriesStore.select(state => state.repository).subscribe(
-      ({ data, isLoading, url }) => {
-        if (url === '') {
-          this.router.navigate(['/'])
-        }
+      ({ data, isLoading, url, ok }) => {
+        console.log(data, isLoading, url, ok);
+        
+        if( !ok || url === '') this.router.navigate(['/'])
         if (data !== null) {
           this.repositories$ = data
         }

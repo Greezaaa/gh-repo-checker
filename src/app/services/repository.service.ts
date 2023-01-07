@@ -1,8 +1,11 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { RepoData, RepositoryResponse } from '../interfaces/repo.interface'
 import { IssuesList, IssuesResponse } from '../interfaces/issue.interface'
 import { ROOT_API_URL } from '../config'
+import { errorCheck } from '../store/actions/repository.action'
+import { Store } from '@ngrx/store'
+import { AppStore } from '../store/app.states'
 
 
 
@@ -13,7 +16,8 @@ import { ROOT_API_URL } from '../config'
 export class RepositoryService {
 
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private repositoriesStore: Store<AppStore>
   ) { }
 
   fetchRepository(
@@ -28,16 +32,6 @@ export class RepositoryService {
       //   Authorization: 'Bearer ' + GITHUB_TOKEN
       // }
     }).subscribe((data): void => {
-      // const repository = {
-      //   id: data.id,
-      //   name: data.name,
-      //   issuesCount: data.open_issues_count,
-      //   owner: {
-      //     id: data.owner.id,
-      //     login: data.owner.login,
-      //     avatar: data.owner.avatar_url
-      //   }
-      // }
       const repository = {
         id: data.id,
         name: data.name,
@@ -57,6 +51,12 @@ export class RepositoryService {
         }
       }
       onSuccess(repository)
+      this.repositoriesStore.dispatch(errorCheck({ ok:true }))
+    }, (error: HttpErrorResponse) => {
+      if (!error.ok) {
+        console.log( error.ok, "error.status, error.statusText");
+        this.repositoriesStore.dispatch(errorCheck({ ok: error.ok }))
+      }
     })
   }
 
