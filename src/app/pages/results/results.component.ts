@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store'
 import { RepoData } from 'src/app/interfaces/repo.interface'
 import { AppStore } from 'src/app/store/app.states'
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-results',
@@ -32,18 +33,24 @@ export class ResultsComponent {
 
   constructor(
     private readonly repositoriesStore: Store<AppStore>,
+    private datePipe: DatePipe,
     private router: Router
   ) {
     this.repositoriesStore.select(state => state.repository).subscribe(
       ({ data, isLoading, url, ok }) => {
-        console.log(data, isLoading, url, ok);
-        
+
         if( !ok || url === '') this.router.navigate(['/'])
+        
         if (data !== null) {
           this.repositories$ = data
+          // this.repositories$.created_at = data.created_at
+          // this.transformDate(this.repositories$.created_at)
         }
         this.isLoading$ = isLoading
       }
     )
+  }
+  transformDate(date: string) {
+    return this.datePipe.transform(date, 'dd-MMM-yyyy');
   }
 }

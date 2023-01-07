@@ -15,7 +15,7 @@ import { errorCheck } from '../../store/actions/repository.action';
 export class FormSearchComponent implements OnInit {
   issues_per_page: number = ISSUES_PER_PAGE
   currentPage: number = 1
-  searchedUrl: string = ""
+  searchedUrl: string = "https://github.com/irontec/ivozprovider"
   urlStatus: boolean = false
   msg:string = ""
   ok: boolean = true
@@ -38,7 +38,7 @@ export class FormSearchComponent implements OnInit {
     this.repositoriesStore.select(state => state.repository).subscribe(
       ({ ok }) => {
        if(!ok) {
-        this.msg = 'Invalid URL - must have the following format: https://github.com/OWNER/REPO-NAME"'
+        this.msg = 'No data found for this repository name, pls try another one'
         setTimeout(() => {
           this.msg = ''
           this.repositoriesStore.dispatch(errorCheck({ ok:true }))

@@ -1,29 +1,18 @@
-<p>paginator works!</p>
-<p *ngIf="repoUrl">{{repoUrl}}</p>
-<p *ngIf="currentPage">{{currentPage}}</p>
-<p *ngIf="issuesCount">{{issuesCount}}</p>
-<p *ngIf="lastPage">{{lastPage}}</p>
-<p *ngIf="issues_per_page">{{issues_per_page}}</p>
 
-<style>
-  .active {
-    background-color: #4CAF50;
-    color: white;
-  }
-</style>
 
-<div *ngIf="currentPage > 0">
-  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
-  <span>Pagina actual {{currentPage}}</span>
-  
-  <select #cricket (change)="changePage(+cricket.value)">
-    <option value="default" disabled selected>Pagina actual {{currentPage}}</option>
-    <option *ngFor="let page of pages" [value]="page" [disabled]="currentPage === page">
-      {{page}}
-    </option>
-  </select>
-  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === lastPage">Siguiente</button>
-</div>
-<div *ngFor="let page of pages" style="display:inline-block">
-      <button [ngClass]="currentPage === page ? 'active' : ''" (click)="changePage(page)" [disabled]="isLoading">{{page}}</button>
-</div>
+ 
+   <div *ngIf="currentPage > 0">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
+    <span>Pagina actual {{currentPage}}</span> 
+    
+    <select #cricket (change)="changePage(+cricket.value)">
+      <option value="default" disabled selected>Pagina actual {{currentPage}}</option>
+      <option *ngFor="let page of pages" [value]="page" [disabled]="currentPage === page">
+        {{page}}
+      </option>
+    </select>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === lastPage">Siguiente</button>
+  </div>
+  <div *ngFor="let page of pages" style="display:inline-block">
+        <button [ngClass]="currentPage === page ? 'active' : ''" (click)="changePage(page)" [disabled]="isLoading">{{page}}</button>
+  </div>

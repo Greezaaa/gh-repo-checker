@@ -54,7 +54,6 @@ export class RepositoryService {
       this.repositoriesStore.dispatch(errorCheck({ ok:true }))
     }, (error: HttpErrorResponse) => {
       if (!error.ok) {
-        console.log( error.ok, "error.status, error.statusText");
         this.repositoriesStore.dispatch(errorCheck({ ok: error.ok }))
       }
     })
