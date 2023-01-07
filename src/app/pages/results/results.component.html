@@ -7,8 +7,7 @@
             <div class="flex justify-center ">
                 <div
                     class="repo_owner mb-10 flex gap-2 flex flex-col md:flex-row md:max-w-xl text-white-900 rounded-lg justify-center align-center shadow-lg ">
-                    <img class="w-48 md: self-center rounded-lg" *ngIf="{{repo.owner.avatar_url > 0}}"
-                    [src]="{{repo.owner.avatar_url}}"
+                    <img class="w-48 md: self-center rounded-lg" lazyload src="{{repo.owner.avatar_url}}"
                         alt="{{repo.owner.login}} avatar">
                     <div
                         class="repo_info flex  md:flex-col md:max-w-xl  p-4 rounded-r-lg bg-gray-900 flex justify-center flex-col block text-gray-700 text-base text-right">

@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { RepoData, RepositoryResponse } from '../interfaces/repo.interface'
 import { IssuesList, IssuesResponse } from '../interfaces/issue.interface'
-import { ROOT_API_URL } from '../config'
+import { ROOT_API_URL, ISSUES_PER_PAGE } from '../config';
 import { errorCheck } from '../store/actions/repository.action'
 import { Store } from '@ngrx/store'
 import { AppStore } from '../store/app.states'
@@ -14,7 +14,7 @@ import { AppStore } from '../store/app.states'
 })
 
 export class RepositoryService {
-
+issues_per_page = ISSUES_PER_PAGE
   constructor(
     private readonly http: HttpClient,
     private repositoriesStore: Store<AppStore>
@@ -26,12 +26,7 @@ export class RepositoryService {
     onSuccess: (data: RepoData) => void): void {
     const url = `${ROOT_API_URL}repos/${owner}/${repo}`
 
-    this.http.get<RepositoryResponse>(url, {
-      // TODO: add header with token if needed
-      // headers: {
-      //   Authorization: 'Bearer ' + GITHUB_TOKEN
-      // }
-    }).subscribe((data): void => {
+    this.http.get<RepositoryResponse>(url).subscribe((data): void => {
       const repository = {
         id: data.id,
         name: data.name,
@@ -65,13 +60,8 @@ export class RepositoryService {
     page = 1,
     onSuccess: (issues: IssuesList) => void
   ): void {
-    const url = `${ROOT_API_URL}repos/${owner}/${repo}/issues?page=${page}`
-    this.http.get<IssuesResponse>(url, {
-      // TODO: add header with token if needed
-      // headers: {
-      //   Authorization: 'Bearer ' + GITHUB_TOKEN
-      // }
-    }).subscribe((data): void => {
+    const url = `${ROOT_API_URL}repos/${owner}/${repo}/issues?per_page=${this.issues_per_page}&page=${page}`
+    this.http.get<IssuesResponse>(url).subscribe((data): void => {
       onSuccess(data)
     })
   }

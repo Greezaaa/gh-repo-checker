@@ -2,8 +2,8 @@ import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { RepoData } from 'src/app/interfaces/repo.interface'
 import { AppStore } from 'src/app/store/app.states'
-import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router'
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-results',
@@ -42,15 +42,12 @@ export class ResultsComponent {
         if( !ok || url === '') this.router.navigate(['/'])
         
         if (data !== null) {
-          this.repositories$ = data
-          // this.repositories$.created_at = data.created_at
-          // this.transformDate(this.repositories$.created_at)
-        }
+          this.repositories$ = data}
         this.isLoading$ = isLoading
       }
     )
   }
   transformDate(date: string) {
-    return this.datePipe.transform(date, 'dd-MMM-yyyy');
+    return this.datePipe.transform(date, 'dd-MMM-yyyy')
   }
 }

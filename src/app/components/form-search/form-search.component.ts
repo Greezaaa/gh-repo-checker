@@ -6,7 +6,7 @@ import { receiveData, receiveIssues, setUrl } from 'src/app/store/actions/reposi
 import { AppStore } from 'src/app/store/app.states'
 import { RepositoryService } from '../../services/repository.service'
 import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
-import { errorCheck } from '../../store/actions/repository.action';
+import { errorCheck } from '../../store/actions/repository.action'
 
 @Component({
   selector: 'app-form-search',
@@ -14,11 +14,11 @@ import { errorCheck } from '../../store/actions/repository.action';
 })
 export class FormSearchComponent implements OnInit {
   issues_per_page: number = ISSUES_PER_PAGE
-  currentPage: number = 1
-  searchedUrl: string = "https://github.com/irontec/ivozprovider"
-  urlStatus: boolean = false
-  msg:string = ""
-  ok: boolean = true
+  currentPage = 1
+  searchedUrl = "https://github.com/irontec/ivozprovider"
+  urlStatus = false
+  msg = ""
+  ok = true
   constructor(
     private router: Router,
     private readonly repositoriesStore: Store<AppStore>,

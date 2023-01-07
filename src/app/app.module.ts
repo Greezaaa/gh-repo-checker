@@ -23,6 +23,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component'
 import { FormSearchComponent } from './components/form-search/form-search.component'
 import { LazyLoadImageModule } from 'ng-lazyload-image'
 
+
 @NgModule({
   declarations: [
     FormSearchComponent,
@@ -33,11 +34,10 @@ import { LazyLoadImageModule } from 'ng-lazyload-image'
     IssuesComponent,
     PaginatorComponent,
     SpinnerComponent,
-    LazyLoadImageModule
   ],
   imports: [
     CommonModule,
-
+    LazyLoadImageModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,

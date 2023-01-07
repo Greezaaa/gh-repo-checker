@@ -1,4 +1,4 @@
-export const ISSUES_PER_PAGE = 30
+export const ISSUES_PER_PAGE = 10
 export const ROOT_API_URL = 'https://api.github.com/'
 
 export function getRepoDataFromUrl(url: string): { owner: string, repo: string } | null{
