@@ -1,56 +1,52 @@
 //main core
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, isDevMode } from '@angular/core';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgModule, isDevMode } from '@angular/core'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { AppRoutingModule } from './app-routing.module'
+import { HttpClientModule } from '@angular/common/http'
+import { BrowserModule } from '@angular/platform-browser'
+import { CommonModule, DatePipe } from '@angular/common'
+import { StoreModule } from '@ngrx/store'
+import { FormsModule } from '@angular/forms'
 
 //redux
-import { reducers } from './reduxStates/app.states';
+import { reducers } from './store/app.states'
 
-//material UI
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatListModule } from '@angular/material/list';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 //components
-import { FormSearchComponent } from './components/form-search/form-search.component';
-import { HeaderComponent } from './pages/header/header.component';
-import { HomeComponent } from './pages/home/home.component';
-import { PaginatePipe } from './pipes/paginate.pipe';
-import { AppComponent } from './app.component';
-import { RepoInfoComponent } from './pages/repo-info/repo-info.component';
-import { ResultsComponent } from './pages/results/results.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-import { MessageComponent } from './components/message/message.component';
+import { HomeComponent } from './pages/home/home.component'
+import { AppComponent } from './app.component'
+import { HeaderComponent } from './components/header/header.component'
+import { IssuesComponent } from './components/issues/issues.component'
+import { SpinnerComponent } from './components/spinner/spinner.component'
+import { ResultsComponent } from './pages/results/results.component'
+import { PaginatorComponent } from './components/paginator/paginator.component'
+import { FormSearchComponent } from './components/form-search/form-search.component'
+import { LazyLoadImageModule } from 'ng-lazyload-image'
+
 
 @NgModule({
   declarations: [
     FormSearchComponent,
-    RepoInfoComponent,
-    ResultsComponent,
-    SpinnerComponent,
-    MessageComponent,
     HeaderComponent,
     HomeComponent,
     AppComponent,
-    PaginatePipe,
+    ResultsComponent,
+    IssuesComponent,
+    PaginatorComponent,
+    SpinnerComponent,
   ],
   imports: [
+    CommonModule,
     FormsModule,
     BrowserModule,
-    MatListModule,
-    AppRoutingModule,
     HttpClientModule,
-    MatPaginatorModule,
+    AppRoutingModule,
+    LazyLoadImageModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [ ],
+  providers: [    DatePipe, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,10 @@
-<input type="text" #inputSearch (keydown.enter)="getRepository(inputSearch.value)"  [(ngModel)]="searchValue" />
+<input #inputSearch type="text" 
+[ngClass]="!urlStatus ? 'rounded-md p-3 w-full focus:outline-green-300 focus:border-green-300' :'rounded-md p-3 w-full focus:outline-red-300 focus:border-red-300' "
+id="inputSearch" 
+(keydown.enter)="getRepository(inputSearch.value)" (ngModelChange)="checkUrl(inputSearch.value)" [(ngModel)]="searchedUrl"
+    placeholder="https://github.com/{owner}/{repo}" />
+<label   for="inputSearch">
+    <span class="absolute text-red-600/50 top-16 right-10 p-4 bordera border-purple-300 animate-fade" *ngIf="msg!== ''">
+        {{msg}}
+    </span>
+</label>
