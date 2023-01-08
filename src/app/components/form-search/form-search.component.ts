@@ -1,26 +1,76 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
-import { setSearchedValue } from 'src/app/store/actions/searchedValue.action';
+import { Component, OnInit } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Router } from '@angular/router'
+
+import { receiveData, receiveIssues, setUrl } from 'src/app/store/actions/repository.action'
+import { AppStore } from 'src/app/store/app.states'
+import { RepositoryService } from '../../services/repository.service'
+import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
+import { errorCheck } from '../../store/actions/repository.action'
 
 @Component({
   selector: 'app-form-search',
   templateUrl: './form-search.component.html',
 })
-export class FormSearchComponent {
-
-  searchValue = "";
-
+export class FormSearchComponent implements OnInit {
+  issues_per_page: number = ISSUES_PER_PAGE
+  currentPage = 1
+  searchedUrl = "https://github.com/irontec/ivozprovider"
+  urlStatus = false
+  msg = ""
+  ok = true
   constructor(
     private router: Router,
-    private searchedValueStore: Store<{ searchState: string }>
+    private readonly repositoriesStore: Store<AppStore>,
+    private readonly repositoryService: RepositoryService,
   ) { }
+  ngOnInit(): void {
+    this.checkOk()
+  }
 
-  // searching for repository and saving to store
-  getRepository(e: string) {
-    this.searchedValueStore.dispatch(setSearchedValue({ searchedValue: e }));
+  checkUrl(url: string): boolean {
+    const repoUrl = getRepoDataFromUrl(url)
+    repoUrl ? this.urlStatus = false : this.urlStatus = true
+    return this.urlStatus
+  }
+  
+  checkOk():void {
+    this.repositoriesStore.select(state => state.repository).subscribe(
+      ({ ok }) => {
+       if(!ok) {
+        this.msg = 'No data found for this repository name, pls try another one'
+        setTimeout(() => {
+          this.msg = ''
+          this.repositoriesStore.dispatch(errorCheck({ ok:true }))
+        }, 3000)
+       }
+      }
+    )
+  }
+  async getRepository(repositoryUrl: string): Promise<void> {
+    this.repositoriesStore.dispatch(setUrl({ url: repositoryUrl }))
+    const repoUrl = getRepoDataFromUrl(repositoryUrl) 
 
-    this.searchValue = "";
-    this.router.navigate(['/results']);
+    if (!repoUrl) {
+      this.msg = 'Invalid URL - must have the following format: https://github.com/OWNER/REPO-NAME"'
+      setTimeout(() => {
+        this.msg = ''
+      }, 3000)
+      return
+    }
+    const { owner, repo } = repoUrl
+    this.repositoryService.fetchRepository(owner, repo, (repository) => {
+      const issuesLastPage = Math.ceil(repository.issuesCount / this.issues_per_page)
+      const page = this.currentPage
+      this.repositoriesStore.dispatch(receiveData({ repository, issuesLastPage, page }))
+    })
+
+    this.repositoryService.fetchIssues(owner, repo, this.currentPage, (issues) => {
+      this.repositoriesStore.dispatch(receiveIssues({ issues }))
+    })
+
+    this.searchedUrl = ""
+    await this.router.navigate(['/results'])
+
   }
 }

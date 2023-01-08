@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "lint:fix",
+            "problemMatcher": "$eslint-stylish",
+            "autoDetect": true,
+            "label": "Lint Fix",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "runOn": "save"
+        }
+    ]
+}

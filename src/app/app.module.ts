@@ -1,22 +1,28 @@
 //main core
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, isDevMode } from '@angular/core';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgModule, isDevMode } from '@angular/core'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { AppRoutingModule } from './app-routing.module'
+import { HttpClientModule } from '@angular/common/http'
+import { BrowserModule } from '@angular/platform-browser'
+import { CommonModule, DatePipe } from '@angular/common'
+import { StoreModule } from '@ngrx/store'
+import { FormsModule } from '@angular/forms'
 
 //redux
-import { reducers } from './store/app.states';
+import { reducers } from './store/app.states'
 
 //components
-import { FormSearchComponent } from './components/form-search/form-search.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { RepoComponent } from './pages/repo/repo.component';
+import { HomeComponent } from './pages/home/home.component'
+import { AppComponent } from './app.component'
+import { HeaderComponent } from './components/header/header.component'
+import { IssuesComponent } from './components/issues/issues.component'
+import { SpinnerComponent } from './components/spinner/spinner.component'
+import { ResultsComponent } from './pages/results/results.component'
+import { PaginatorComponent } from './components/paginator/paginator.component'
+import { FormSearchComponent } from './components/form-search/form-search.component'
+import { LazyLoadImageModule } from 'ng-lazyload-image'
+
 
 @NgModule({
   declarations: [
@@ -24,18 +30,23 @@ import { RepoComponent } from './pages/repo/repo.component';
     HeaderComponent,
     HomeComponent,
     AppComponent,
-    RepoComponent
+    ResultsComponent,
+    IssuesComponent,
+    PaginatorComponent,
+    SpinnerComponent,
   ],
   imports: [
+    CommonModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
+    LazyLoadImageModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [ ],
+  providers: [    DatePipe, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
