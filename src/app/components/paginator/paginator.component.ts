@@ -15,6 +15,14 @@ import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
       background-color: rgba(0,0,0,0.1);
       color: rgba(0,0,0,0.3);
     }
+    .current-page {
+      border: 1px solid rgb(168 85 247);
+      color: rgb(168 85 247);
+    }
+    .current-page.active {
+      background-color: rgb(168 85 247);
+      color: white;
+    }
   `],
   templateUrl: './paginator.component.html'
 })

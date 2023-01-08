@@ -1,6 +1,3 @@
-
-
-
 <div class=" flex flex-col justify-center items-center" *ngIf="currentPage > 0">
     <ul class="flex items-center list-style-none gap-4">
       <li class="page-item">
@@ -9,12 +6,6 @@
           (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
       </li>
       <!-- <li class="page-item">{{currentPage}}</li> -->
-      
-      <li class="page-item">
-        <button
-          class="paginator_btn page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-purple-800 hover:text-white hover:bg-purple-200 focus:shadow-none"
-          (click)="changePage(currentPage + 1)" [disabled]="currentPage === lastPage">Next</button>
-      </li>
       <li>
         <select #checked (change)="changePage(+checked.value)"
           class="bg-white border border-none text-gray-900 text-sm focus:ring-purple-500 focus:border-purple-500 block w-60 p-2.5 dark:text-white dark:focus:ring-purple-300 dark:focus:border-purple-500">
@@ -24,9 +15,16 @@
           </option>
         </select>
       </li>
+      <li class="page-item">
+        <button
+          class="paginator_btn page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-purple-800 hover:text-white hover:bg-purple-200 focus:shadow-none"
+          (click)="changePage(currentPage + 1)" [disabled]="currentPage === lastPage">Next</button>
+      </li>
+      
     </ul>
   <div  class=" flex flex-row justify-center items-center my-2 gap-1 flex-wrap">
-    <button class="p-1 hover:bg-purple-500 rounded hover:shadow-lg hover:border-purple-900 text-gray-900 hover:text-white" *ngFor="let page of pages" [ngClass]="currentPage === page ? 'active' : ''" (click)="changePage(page)"
+    <button class="current-page p-1 hover:bg-purple-500 rounded hover:shadow-lg hover:border-purple-900 text-gray-900 hover:text-white" 
+      *ngFor="let page of pages" [ngClass]="currentPage === page ? 'active' : ''" (click)="changePage(page)"
       [disabled]="isLoading">{{page}}</button>
   </div>
 </div>
