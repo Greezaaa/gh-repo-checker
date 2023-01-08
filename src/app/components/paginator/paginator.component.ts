@@ -8,6 +8,14 @@ import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
 
 @Component({
   selector: 'app-paginator',
+  styles: [`
+    .paginator_btn[disabled] {
+      cursor: not-allowed;
+      user-select: none;
+      background-color: rgba(0,0,0,0.1);
+      color: rgba(0,0,0,0.3);
+    }
+  `],
   templateUrl: './paginator.component.html'
 })
 export class PaginatorComponent {
@@ -18,7 +26,7 @@ export class PaginatorComponent {
   currentPage = 0
   lastPage = 0
   isLoading = false
-  
+
   constructor(
     private readonly repositoriesStore: Store<AppStore>,
     private readonly repositoryService: RepositoryService
@@ -47,13 +55,13 @@ export class PaginatorComponent {
   async changePage(page: number) {
     this.currentPage = page
     this.repositoriesStore.dispatch(setIssuesPage({ page }))
-    
+
     const repoUrl = getRepoDataFromUrl(this.repoUrl)
     if (repoUrl) {
       const { owner, repo } = repoUrl
       this.repositoryService.fetchIssues(owner, repo, page, (issues) => {
         this.repositoriesStore.dispatch(receiveIssues({ issues }))
       })
-    } 
+    }
   }
 }

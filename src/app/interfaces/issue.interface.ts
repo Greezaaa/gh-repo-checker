@@ -1,6 +1,10 @@
+export interface Label {
+  name: string
+  color: string
+}
 export interface Issue {
   id: number
-  html_url: string
+  labels: Array<Label>,
   body: string,
   title: string
   author_association: string
@@ -14,7 +18,9 @@ export interface Issue {
     login: string
     type: string
     site_admin: boolean
+    html_url: string
   }
+  expanded: boolean
 }
 
 export type IssuesList = Array<Issue>

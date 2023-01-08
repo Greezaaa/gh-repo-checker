@@ -1,5 +1,5 @@
 <div class="md:container md:mx-auto p-4">
-    <div class="w-full h-full bg-red absolute" *ngIf="isLoading$ === true; else results">
+    <div class="h-96 flex justify-center items-center" *ngIf="isLoading$ === true; else results">
         <app-spinner></app-spinner>
     </div>
     <ng-template #results>
@@ -10,7 +10,7 @@
                     <img class="w-48 md: self-center rounded-lg" lazyload src="{{repo.owner.avatar_url}}"
                         alt="{{repo.owner.login}} avatar">
                     <div
-                        class="repo_info flex  md:flex-col md:max-w-xl  p-4 rounded-r-lg bg-gray-900 flex justify-center flex-col block text-gray-700 text-base text-right">
+                        class="repo_info flex  md:flex-col md:max-w-xl  p-4 rounded-r-lg bg-dark flex justify-center flex-col block text-gray-700 text-base text-right">
                         <a href="{{repo.git_url}}" title="{{repo.name}} on GitHub"><span
                                 class="text-xs text-slate-400 block w-full">{{repo.id}}</span></a>
                         <h3 class="text-white text-2xl uppercase font-medium mb-2">{{repo.name}}

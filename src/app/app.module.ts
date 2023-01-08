@@ -37,11 +37,11 @@ import { LazyLoadImageModule } from 'ng-lazyload-image'
   ],
   imports: [
     CommonModule,
-    LazyLoadImageModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
+    LazyLoadImageModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
