@@ -10,48 +10,50 @@ import { errorCheck } from '../../store/actions/repository.action'
 
 @Component({
   selector: 'app-form-search',
-  templateUrl: './form-search.component.html',
+  templateUrl: './form-search.component.html'
 })
 export class FormSearchComponent implements OnInit {
   issues_per_page: number = ISSUES_PER_PAGE
   currentPage = 1
-  searchedUrl = "https://github.com/irontec/ivozprovider"
+  searchedUrl = 'https://github.com/irontec/ivozprovider'
   urlStatus = false
-  msg = ""
+  msg = ''
   ok = true
-  constructor(
-    private router: Router,
+  constructor (
+    private readonly router: Router,
     private readonly repositoriesStore: Store<AppStore>,
-    private readonly repositoryService: RepositoryService,
+    private readonly repositoryService: RepositoryService
   ) { }
-  ngOnInit(): void {
+
+  ngOnInit (): void {
     this.checkOk()
   }
 
-  checkUrl(url: string): boolean {
+  checkUrl (url: string): boolean {
     const repoUrl = getRepoDataFromUrl(url)
-    repoUrl ? this.urlStatus = false : this.urlStatus = true
+    ;(repoUrl != null) ? this.urlStatus = false : this.urlStatus = true
     return this.urlStatus
   }
-  
-  checkOk():void {
+
+  checkOk (): void {
     this.repositoriesStore.select(state => state.repository).subscribe(
       ({ ok }) => {
-       if(!ok) {
-        this.msg = 'No data found for this repository name, pls try another one'
-        setTimeout(() => {
-          this.msg = ''
-          this.repositoriesStore.dispatch(errorCheck({ ok:true }))
-        }, 3000)
-       }
+        if (!ok) {
+          this.msg = 'No data found for this repository name, pls try another one'
+          setTimeout(() => {
+            this.msg = ''
+            this.repositoriesStore.dispatch(errorCheck({ ok: true }))
+          }, 3000)
+        }
       }
     )
   }
-  async getRepository(repositoryUrl: string): Promise<void> {
-    this.repositoriesStore.dispatch(setUrl({ url: repositoryUrl }))
-    const repoUrl = getRepoDataFromUrl(repositoryUrl) 
 
-    if (!repoUrl) {
+  async getRepository (repositoryUrl: string): Promise<void> {
+    this.repositoriesStore.dispatch(setUrl({ url: repositoryUrl }))
+    const repoUrl = getRepoDataFromUrl(repositoryUrl)
+
+    if (repoUrl == null) {
       this.msg = 'Invalid URL - must have the following format: https://github.com/OWNER/REPO-NAME"'
       setTimeout(() => {
         this.msg = ''
@@ -69,8 +71,7 @@ export class FormSearchComponent implements OnInit {
       this.repositoriesStore.dispatch(receiveIssues({ issues }))
     })
 
-    this.searchedUrl = ""
+    this.searchedUrl = ''
     await this.router.navigate(['/results'])
-
   }
 }

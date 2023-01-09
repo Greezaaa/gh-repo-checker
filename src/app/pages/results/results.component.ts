@@ -10,7 +10,6 @@ import { DatePipe } from '@angular/common'
   templateUrl: './results.component.html'
 })
 export class ResultsComponent {
-
   repositories$: RepoData = {
     id: 0,
     name: '',
@@ -26,28 +25,30 @@ export class ResultsComponent {
     owner: {
       id: 0,
       login: '',
-      avatar_url: '',
+      avatar_url: ''
     }
   }
+
   isLoading$ = false
 
-  constructor(
+  constructor (
     private readonly repositoriesStore: Store<AppStore>,
-    private datePipe: DatePipe,
-    private router: Router
+    private readonly datePipe: DatePipe,
+    private readonly router: Router
   ) {
-    this.repositoriesStore.select(state => state.repository).subscribe(
+    this.repositoriesStore
+    .select(state => state.repository).subscribe(
       ({ data, isLoading, url, ok }) => {
-
-        if( !ok || url === '') this.router.navigate(['/'])
-        
+        if (!ok || url === '') this.router.navigate(['/'])
         if (data !== null) {
-          this.repositories$ = data}
+          this.repositories$ = data
+        }
         this.isLoading$ = isLoading
       }
     )
   }
-  transformDate(date: string) {
+
+  transformDate (date: string): string | null {
     return this.datePipe.transform(date, 'dd-MMM-yyyy')
   }
 }

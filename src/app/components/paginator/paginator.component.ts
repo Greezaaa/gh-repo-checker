@@ -29,13 +29,13 @@ import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
 export class PaginatorComponent {
   issues_per_page = ISSUES_PER_PAGE
   pages: number[] = []
-  repoUrl = ""
+  repoUrl = ''
   issuesCount = 0
   currentPage = 0
   lastPage = 0
   isLoading = false
 
-  constructor(
+  constructor (
     private readonly repositoriesStore: Store<AppStore>,
     private readonly repositoryService: RepositoryService
   ) {
@@ -60,12 +60,12 @@ export class PaginatorComponent {
     )
   }
 
-  async changePage(page: number) {
+  async changePage (page: number): Promise<void> {
     this.currentPage = page
     this.repositoriesStore.dispatch(setIssuesPage({ page }))
 
     const repoUrl = getRepoDataFromUrl(this.repoUrl)
-    if (repoUrl) {
+    if (repoUrl != null) {
       const { owner, repo } = repoUrl
       this.repositoryService.fetchIssues(owner, repo, page, (issues) => {
         this.repositoriesStore.dispatch(receiveIssues({ issues }))

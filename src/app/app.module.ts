@@ -1,4 +1,4 @@
-//main core
+// main core
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule, isDevMode } from '@angular/core'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
@@ -9,10 +9,10 @@ import { CommonModule, DatePipe } from '@angular/common'
 import { StoreModule } from '@ngrx/store'
 import { FormsModule } from '@angular/forms'
 
-//redux
+// redux
 import { reducers } from './store/app.states'
 
-//components
+// components
 import { HomeComponent } from './pages/home/home.component'
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './components/header/header.component'
@@ -23,7 +23,6 @@ import { PaginatorComponent } from './components/paginator/paginator.component'
 import { FormSearchComponent } from './components/form-search/form-search.component'
 import { LazyLoadImageModule } from 'ng-lazyload-image'
 
-
 @NgModule({
   declarations: [
     FormSearchComponent,
@@ -33,7 +32,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image'
     ResultsComponent,
     IssuesComponent,
     PaginatorComponent,
-    SpinnerComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -44,9 +43,9 @@ import { LazyLoadImageModule } from 'ng-lazyload-image'
     LazyLoadImageModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
-  providers: [    DatePipe, ],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

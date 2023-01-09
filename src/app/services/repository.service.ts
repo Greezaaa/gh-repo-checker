@@ -2,25 +2,23 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { RepoData, RepositoryResponse } from '../interfaces/repo.interface'
 import { IssuesList, IssuesResponse } from '../interfaces/issue.interface'
-import { ROOT_API_URL, ISSUES_PER_PAGE } from '../config';
+import { ROOT_API_URL, ISSUES_PER_PAGE } from '../config'
 import { errorCheck } from '../store/actions/repository.action'
 import { Store } from '@ngrx/store'
 import { AppStore } from '../store/app.states'
-
-
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class RepositoryService {
-issues_per_page = ISSUES_PER_PAGE
-  constructor(
+  issues_per_page = ISSUES_PER_PAGE
+  constructor (
     private readonly http: HttpClient,
-    private repositoriesStore: Store<AppStore>
+    private readonly repositoriesStore: Store<AppStore>
   ) { }
 
-  fetchRepository(
+  fetchRepository (
     owner: string,
     repo: string,
     onSuccess: (data: RepoData) => void): void {
@@ -46,7 +44,7 @@ issues_per_page = ISSUES_PER_PAGE
         }
       }
       onSuccess(repository)
-      this.repositoriesStore.dispatch(errorCheck({ ok:true }))
+      this.repositoriesStore.dispatch(errorCheck({ ok: true }))
     }, (error: HttpErrorResponse) => {
       if (!error.ok) {
         this.repositoriesStore.dispatch(errorCheck({ ok: error.ok }))
@@ -54,7 +52,7 @@ issues_per_page = ISSUES_PER_PAGE
     })
   }
 
-  fetchIssues(
+  fetchIssues (
     owner: string,
     repo: string,
     page = 1,
