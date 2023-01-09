@@ -21,7 +21,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component'
 import { ResultsComponent } from './pages/results/results.component'
 import { PaginatorComponent } from './components/paginator/paginator.component'
 import { FormSearchComponent } from './components/form-search/form-search.component'
-import { LazyLoadImageModule } from 'ng-lazyload-image'
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { ServiceWorkerModule } from '@angular/service-worker'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,14 @@ import { LazyLoadImageModule } from 'ng-lazyload-image'
     LazyLoadImageModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      // registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerImmediately'
+    })
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

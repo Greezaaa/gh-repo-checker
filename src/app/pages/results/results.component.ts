@@ -4,6 +4,7 @@ import { RepoData } from 'src/app/interfaces/repo.interface'
 import { AppStore } from 'src/app/store/app.states'
 import { Router } from '@angular/router'
 import { DatePipe } from '@angular/common'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-results',
@@ -28,8 +29,9 @@ export class ResultsComponent {
       avatar_url: ''
     }
   }
-
-  isLoading$ = false
+  
+  isLoading:boolean = false
+  isOnline: boolean = false
 
   constructor (
     private readonly repositoriesStore: Store<AppStore>,
@@ -43,12 +45,25 @@ export class ResultsComponent {
         if (data !== null) {
           this.repositories$ = data
         }
-        this.isLoading$ = isLoading
+        this.isLoading = isLoading
       }
     )
+    this.checkConnection();
   }
+
 
   transformDate (date: string): string | null {
     return this.datePipe.transform(date, 'dd-MMM-yyyy')
   }
+
+  checkConnection(){
+    if (window.navigator.onLine) {
+      console.log('online');
+      this.isOnline = true;
+    } else {
+      console.log('offline');
+      this.isOnline = false;
+    }
+  }
+
 }
