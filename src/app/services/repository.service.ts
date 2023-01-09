@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { Store } from '@ngrx/store'
+
+import { ROOT_API_URL, ISSUES_PER_PAGE } from '../config'
 import { RepoData, RepositoryResponse } from '../interfaces/repo.interface'
 import { IssuesList, IssuesResponse } from '../interfaces/issue.interface'
-import { ROOT_API_URL, ISSUES_PER_PAGE } from '../config'
 import { errorCheck } from '../store/actions/repository.action'
-import { Store } from '@ngrx/store'
 import { AppStore } from '../store/app.states'
 
 @Injectable({

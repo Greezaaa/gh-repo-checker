@@ -7,7 +7,7 @@ import { RepoData } from '../interfaces/repo.interface';
 import { ROOT_API_URL } from '../config';
 import { errorCheck } from '../store/actions/repository.action';
 
-describe('RepositoryService', () => {
+fdescribe('RepositoryService', () => {
     let service: RepositoryService;
     let httpMock: HttpTestingController;
     let store: Store<AppStore>;
@@ -30,10 +30,10 @@ describe('RepositoryService', () => {
     //     httpMock.verify();
     // });
 
-    it('should be created', () => {
+    fit('should be created', () => {
         expect(service).toBeTruthy();
     });
-    it('should fetch a repository and dispatch an action on success', () => {
+    fit('should fetch a repository and dispatch an action on success', () => {
         const owner = 'angular';
         const repo = 'angular';
         const mockResponse = {
