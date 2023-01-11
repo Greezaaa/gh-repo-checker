@@ -6,8 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../../app-routing.module';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../store/app.states';
 import { RepositoryService } from '../../services/repository.service';
@@ -28,8 +26,6 @@ fdescribe('FormSearchComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
         AppRoutingModule,
-        // LazyLoadImageModule,
-        // BrowserAnimationsModule,
         StoreModule.forRoot(reducers)
       ],
       declarations: [ FormSearchComponent ],
