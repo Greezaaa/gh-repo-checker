@@ -8,4 +8,21 @@ import { Component } from '@angular/core'
 export class AppComponent {
   title = 'gh_issues_api_reader'
   static title: string
+
+  isOnline: boolean = false
+  constructor() {}
+
+  checkConnection(){
+    if (window.navigator.onLine) {
+      console.log('online');
+      this.isOnline = true;
+    } else {
+      console.log('offline');
+      this.isOnline = false;
+    }
+  }
+
+  ngOnInit(){
+    this.checkConnection();
+  }
 }
