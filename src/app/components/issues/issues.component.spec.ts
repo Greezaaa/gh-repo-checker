@@ -1,34 +1,41 @@
-import { async, TestBed } from '@angular/core/testing';
-import { IssuesComponent } from './issues.component';
-import { Store } from '@ngrx/store';
-import { AppStore } from 'src/app/store/app.states';
-import { DatePipe } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+
+import { IssuesComponent } from './issues.component'
+import { CommonModule, DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../store/app.states';
 
 describe('IssuesComponent', () => {
-  let component: IssuesComponent;
-  let store: Store<AppStore>;
-  let datePipe: DatePipe;
+  let component: IssuesComponent
+  let fixture: ComponentFixture<IssuesComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [
+        CommonModule,
+        FormsModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        StoreModule.forRoot(reducers)
+      ],
       declarations: [ IssuesComponent ],
-      providers: [
-        { provide: Store, useValue: {} },
-        { provide: DatePipe, useValue: {} }
-      ]
+      providers: [DatePipe]
     })
-    .compileComponents();
-  }));
+    .compileComponents()
 
-  beforeEach(() => {
-    store = TestBed.get(Store);
-    datePipe = TestBed.get(DatePipe);
-    component = new IssuesComponent(store, datePipe);
-  });
+    fixture = TestBed.createComponent(IssuesComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    expect(component).toBeTruthy()
+  })
 
   it('should transform the date using the DatePipe', () => {
     const date = '2022-01-01';

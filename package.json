@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "server": "http-server -p 8081"
+    "http": "http-server -p 8081 -c-1 dist/gh_issues_api_reader"
   },
   "private": true,
   "dependencies": {
