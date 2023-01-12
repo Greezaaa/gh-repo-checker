@@ -1,6 +1,12 @@
-import { RepositoryState } from 'src/app/interfaces/repo.interface'
-import { createReducer, on } from '@ngrx/store'
-import { setUrl, receiveData, receiveIssues, setIssuesPage, errorCheck } from '../actions/repository.action'
+import { RepositoryState } from 'src/app/interfaces/repo.interface';
+import { createReducer, on } from '@ngrx/store';
+import {
+  setUrl,
+  receiveData,
+  receiveIssues,
+  setIssuesPage,
+  errorCheck,
+} from '../actions/repository.action';
 
 const initialState: RepositoryState = {
   url: '',
@@ -11,24 +17,24 @@ const initialState: RepositoryState = {
     isLoading: false,
     list: [],
     page: 0,
-    lastPage: 0
-  }
-}
+    lastPage: 0,
+  },
+};
 
 export const RepositoryReducer = createReducer(
   initialState,
   on(errorCheck, (state, { ok }) => {
     return {
       ...state,
-      ok
-    }
+      ok,
+    };
   }),
   on(setUrl, (state, { url }) => {
     return {
       ...state,
       url,
-      isLoading: true
-    }
+      isLoading: true,
+    };
   }),
   on(receiveData, (state, { repository, issuesLastPage, page }) => {
     return {
@@ -39,26 +45,26 @@ export const RepositoryReducer = createReducer(
         isLoading: true,
         list: [],
         page,
-        lastPage: issuesLastPage
-      }
-    }
+        lastPage: issuesLastPage,
+      },
+    };
   }),
   on(receiveIssues, (state, { issues }) => ({
     ...state,
     issues: {
       ...state.issues,
       isLoading: false,
-      list: issues
-    }
+      list: issues,
+    },
   })),
   on(setIssuesPage, (state, { page }) => ({
     ...state,
     issues: {
       ...state.issues,
       isLoading: true,
-      page
-    }
+      page,
+    },
   }))
-)
+);
 
-export { RepositoryState }
+export { RepositoryState };
