@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { IssuesComponent } from './issues.component'
-import { CommonModule, DatePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterTestingModule } from '@angular/router/testing';
-import { StoreModule } from '@ngrx/store';
-import { reducers } from '../../store/app.states';
+import { CommonModule, DatePipe } from '@angular/common'
+import { FormsModule } from '@angular/forms'
+import { BrowserModule } from '@angular/platform-browser'
+import { HttpClientModule } from '@angular/common/http'
+import { RouterTestingModule } from '@angular/router/testing'
+import { StoreModule } from '@ngrx/store'
+import { reducers } from '../../store/app.states'
 
 describe('IssuesComponent', () => {
   let component: IssuesComponent
@@ -23,10 +23,10 @@ describe('IssuesComponent', () => {
         RouterTestingModule,
         StoreModule.forRoot(reducers)
       ],
-      declarations: [ IssuesComponent ],
+      declarations: [IssuesComponent],
       providers: [DatePipe]
     })
-    .compileComponents()
+      .compileComponents()
 
     fixture = TestBed.createComponent(IssuesComponent)
     component = fixture.componentInstance
@@ -38,8 +38,8 @@ describe('IssuesComponent', () => {
   })
 
   it('should transform the date using the DatePipe', () => {
-    const date = '2022-01-01';
-    const expectedDate = '01-Jan-2022';
-    expect(component.transformDate(date)).toEqual(expectedDate);
-  });
-});
+    const date = '2022-01-01'
+    const expectedDate = '01-Jan-2022'
+    expect(component.transformDate(date)).toEqual(expectedDate)
+  })
+})

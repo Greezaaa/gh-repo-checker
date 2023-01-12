@@ -15,7 +15,7 @@ import { errorCheck } from '../../store/actions/repository.action'
 export class FormSearchComponent implements OnInit {
   issues_per_page: number = ISSUES_PER_PAGE
   currentPage = 1
-  searchedUrl = 'https://github.com/irontec/ivozprovider'
+  searchedUrl = ''
   urlStatus = false
   msg = ''
   ok = true

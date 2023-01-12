@@ -1,28 +1,22 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'gh_issues_api_reader'
   static title: string
 
-  isOnline: boolean = false
-  constructor() {}
+  isOnline = false
 
-  checkConnection(){
-    if (window.navigator.onLine) {
-      console.log('online');
-      this.isOnline = true;
-    } else {
-      console.log('offline');
-      this.isOnline = false;
-    }
+  checkConnection (): boolean {
+    if (window.navigator.onLine) this.isOnline = true
+    return this.isOnline
   }
 
-  ngOnInit(){
-    this.checkConnection();
+  ngOnInit ():void {
+    this.checkConnection()
   }
 }

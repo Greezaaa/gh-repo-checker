@@ -21,7 +21,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component'
 import { ResultsComponent } from './pages/results/results.component'
 import { PaginatorComponent } from './components/paginator/paginator.component'
 import { FormSearchComponent } from './components/form-search/form-search.component'
-import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { LazyLoadImageModule } from 'ng-lazyload-image'
 import { ServiceWorkerModule } from '@angular/service-worker'
 
 @NgModule({
