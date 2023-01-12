@@ -3,8 +3,8 @@
 id="inputSearch" 
 (keydown.enter)="getRepository(inputSearch.value)" (ngModelChange)="checkUrl(inputSearch.value)" [(ngModel)]="searchedUrl"
     placeholder="https://github.com/{owner}/{repo}" />
-<label   for="inputSearch">
+<div   for="inputSearch">
     <span class="absolute text-red-600/50 top-16 right-10 p-4 bordera border-purple-300 animate-fade" *ngIf="msg!== ''">
         {{msg}}
     </span>
-</label>
+</div>

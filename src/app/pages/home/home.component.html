@@ -47,6 +47,7 @@
       <li class="pl-5">TailwindCSS - for styling</li>
       <li class="pl-5">TypeScript - for type checking</li>
       <li class="pl-5">HTML5 - for markup</li>
+      <li class="pl-5">CSS - for app extra styles </li>
     </ul>
   </details>
   <details class="text-xl relative block text-left mt-3">
@@ -91,3 +92,108 @@
     </ul>
   </details>
 </div>
+
+
+<!-- GitHub API Repository Issues checker
+Installation
+How it’s work?
+How I made it?
+What’s next?
+
+Installation
+Run npm instal to download dependencies
+
+Development server
+Run ng serve for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
+
+Running unit tests
+Run nx test to execute the unit tests via Karma.
+
+Build
+If you want to check PWA (offline first) you need to run nx dist to create dist build first and then run http-server. If you want to run new version or clean app cache, use nx dist --skip-nx-cache
+
+back to top
+
+How it’s work?
+<-- img here -->
+
+It’s simple. Just enter the repository link into the search box and hit “enter” to get the info, for example:
+
+https://github.com/facebook/react
+https://github.com/irontec/ivozprovider
+https://github.com/etlegacy/etlegacy/
+The app will make a request to the GitHub API and if exist return a repository with issues list. Before loading the result page, the app will check if the provided link is correct, changing the input field borders from red to green.
+
+Once loaded, you will see basic information like:
+
+Issues title
+Issues labels
+Also, you can click on “+” button to show more information about this issues
+
+Issues ID
+Creation date
+Issue body content
+Owner name
+Owner avatar
+Owner ID
+Hope you like it
+Enjoy! ;)
+
+back to top
+
+How I made it?
+I used Angular 15, TailwindCSS, Angular Router, NgRX, TypeScript HTML5, GitHub API.
+
+<-- imgs here -->
+
+Angular CLI - for frontend
+Angular Router - for routing
+TypeScript - for type checking
+NgRX - for state management
+NX - for offline service
+TailwindCSS - for styling
+HTML5 - for markup
+CSS - for extra styles
+Regex - for link pattern validation
+Why TailwindCSS and not Material UI or Bootstrap?
+I choose TailwindCSS because it’s very light and easy to use.
+You don’t need to download all styles and scripts, only those you use in your application. This way my app is really light and fast.
+
+<-- img here -->
+
+back to top
+
+What’s next?
+There are a lot of things to do. I’m planning to add more features to this app.
+
+For example:
+
+Add repository search
+
+Add pagination
+
+Add url validation
+
+Add HttpErrorResponse check
+
+Add more information about issue
+
+Transform issue “body” into HTML
+
+Add issues tags
+
+Add offline first
+
+Add NgRx effects
+
+Use NX monorepo
+
+Improve testing
+
+Add repository search by “user name” or “repo name”
+
+Add issues comments
+
+And more…
+
+back to top -->
