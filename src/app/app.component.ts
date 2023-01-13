@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     return this.isOnline
   }
 
-  ngOnInit ():void {
+  ngOnInit (): void {
     this.checkConnection()
   }
 }
