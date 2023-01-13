@@ -15,7 +15,7 @@ const initialState: RepositoryState = {
   }
 }
 
-export const RepositoryReducer = createReducer(
+export const repositoryReducer = createReducer(
   initialState,
   on(errorCheck, (state, { ok }) => {
     return {

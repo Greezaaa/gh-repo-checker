@@ -1,4 +1,4 @@
-import { RepositoryReducer, RepositoryState } from './repository.reducer'
+import { RepositoryState, repositoryReducer } from './repository.reducer'
 import { errorCheck, setUrl, receiveData, receiveIssues } from '../actions/repository.action'
 import { Issue } from 'src/app/interfaces/issue.interface'
 
@@ -18,9 +18,12 @@ describe('RepositoryReducer', () => {
     }
     const ok = true
     const action = errorCheck({ ok })
-    const newState = RepositoryReducer(initialState, action)
+    const newState = repositoryReducer(initialState, action)
 
-    expect(newState.ok).toEqual(ok)
+    expect(newState).toEqual({
+      ...initialState,
+      ok: true
+    })
   })
 
   it('should handle the setUrl action', () => {
@@ -38,7 +41,7 @@ describe('RepositoryReducer', () => {
     }
     const url = 'https://github.com/user/repo'
     const action = setUrl({ url })
-    const newState = RepositoryReducer(initialState, action)
+    const newState = repositoryReducer(initialState, action)
 
     expect(newState.url).toEqual(url)
     expect(newState.isLoading).toBeTruthy()
@@ -59,26 +62,26 @@ describe('RepositoryReducer', () => {
     }
     const repository = {
       id: 1,
-      name: 'string',
-      description: 'string',
-      created_at: 'string',
-      git_url: 'string',
-      homepage: 'string',
-      language: 'string',
-      visibility: 'string',
+      name: 'repoName',
+      description: 'description',
+      created_at: '12-12-2022',
+      git_url: 'https://github.com/ownerName/repoName',
+      homepage: 'https://ownerName/repoName.com',
+      language: 'english',
+      visibility: 'open',
       private: false,
-      full_name: 'string',
+      full_name: 'ownerName/repoName',
       issuesCount: 14,
       owner: {
         id: 1,
-        login: 'string',
-        avatar_url: 'string'
+        login: 'ownerName',
+        avatar_url: 'https://imgbank.com/ownerName'
       }
     }
     const issuesLastPage = 3
     const page = 1
     const action = receiveData({ repository, issuesLastPage, page })
-    const newState = RepositoryReducer(initialState, action)
+    const newState = repositoryReducer(initialState, action)
 
     expect(newState.isLoading).toBeFalsy()
     expect(newState.data).toEqual(repository)
@@ -103,47 +106,47 @@ describe('RepositoryReducer', () => {
       {
         id: 100,
         labels: [],
-        body: 'string',
-        title: 'string',
-        author_association: 'string',
-        state: 'string',
+        body: 'description text here',
+        title: 'title test1',
+        author_association: 'author',
+        state: 'stateTest1',
         locked: false,
         comments: 12,
-        created_at: 'string',
+        created_at: '21-11-2020',
         user: {
           id: 123,
-          avatar_url: 'string',
-          login: 'string',
-          type: 'string',
+          avatar_url: 'ownerAvatarUrl',
+          login: 'ownerTest1',
+          type: 'author',
           site_admin: false,
-          html_url: 'string'
+          html_url: 'https://ownerTest1.com'
         },
         expanded: false
       },
       {
-        id: 10230,
+        id: 120,
         labels: [],
-        body: 'string',
-        title: 'string',
-        author_association: 'string',
-        state: 'string',
+        body: 'description text here',
+        title: 'title test2',
+        author_association: 'author',
+        state: 'stateTest2',
         locked: false,
         comments: 12,
-        created_at: 'string',
+        created_at: '21-11-2020',
         user: {
           id: 123,
-          avatar_url: 'string',
-          login: 'string',
-          type: 'string',
+          avatar_url: 'ownerAvatarUrlTest2',
+          login: 'ownerTest2',
+          type: 'admin',
           site_admin: false,
-          html_url: 'string'
+          html_url: 'https://ownerTest2.com'
         },
         expanded: false
       }
 
     ]
     const action = receiveIssues({ issues })
-    const newState = RepositoryReducer(initialState, action)
+    const newState = repositoryReducer(initialState, action)
 
     expect(newState.issues.isLoading).toBeFalsy()
     expect(newState.issues.list).toEqual(issues)
