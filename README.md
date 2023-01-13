@@ -4,7 +4,7 @@
 
 [How does it work?](#section2)
 
-[How I made it?](#section3)
+[How did I made it?](#section3)
 
 [What's next?](#section4)
 <hr>
@@ -55,7 +55,7 @@ Enjoy! ;)
 
 [back to top](#top)
 
-## How I made it?<a id='section3'></a>
+## How did I made it?<a id='section3'></a>
 
 I used Angular 15, TailwindCSS, Angular Router, NgRX, TypeScript HTML5, GitHub API.
 
@@ -93,7 +93,7 @@ For example:
 - [x] Add issues tags
 - [x] Add offline first
 - [x] Add NgRx effects
-- [x] Use NX monorepo
+- [ ] Use NX monorepo
 - [ ] Improve testing
 - [ ] Add repository search by "user name" or "repo name"
 - [ ] Add issues comments
