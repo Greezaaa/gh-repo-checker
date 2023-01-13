@@ -17,7 +17,6 @@ export interface RepoData {
     login: string
     avatar_url: string
   }
-
 }
 
 export interface RepositoryState {

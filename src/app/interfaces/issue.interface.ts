@@ -4,8 +4,8 @@ export interface Label {
 }
 export interface Issue {
   id: number
-  labels: Array<Label>,
-  body: string,
+  labels: Label[]
+  body: string
   title: string
   author_association: string
   state: string
@@ -23,6 +23,6 @@ export interface Issue {
   expanded: boolean
 }
 
-export type IssuesList = Array<Issue>
+export type IssuesList = Issue[]
 
-export type IssuesResponse = Array<Issue>
+export type IssuesResponse = Issue[]
