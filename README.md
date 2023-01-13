@@ -59,13 +59,12 @@ Enjoy! ;)
 
 I used Angular 15, TailwindCSS, Angular Router, NgRX, TypeScript HTML5, GitHub API.
 
-<-- imgsssss here -->
+<-- img here -->
 
 * [Angular CLI](https://angular.io/) - for frontend
 * [Angular Router](https://angular.io/guide/router) - for routing
 * [TypeScript](https://www.typescriptlang.org/) - for type checking
 * [NgRX](https://ngrx.io/) - for state management
-* [NX](https://nx.dev/) - for offline service
 * [TailwindCSS](https://tailwindcss.com/) - for styling
 * [HTML5](https://developer.mozilla.org/es/docs/Web/HTML) - for markup
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS#:~:text=Cascading%20Style%20Sheets%20(CSS)%20is,speech%2C%20or%20on%20other%20media.) - for extra styles 
