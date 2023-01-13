@@ -1,2 +1,17 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+
+<div *ngIf="!isOnline; else content"
+class="fixed top-0 left-0 right-0 bottom-0 bg-gray-300 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full flex flex-col items-center justify-center">
+<div class="relative w-full h-full max-w-2xl md:h-auto flex flex-col items-center justify-center">
+    <div class="relative bg-white rounded-lg shadow flex flex-col items-center justify-center align-center p-4">
+        <img src="../../../assets/icons/icon-384x384.png" alt="angular icon" width="300" />
+        <h2>This is Angular app</h2>
+        <p>The internet connection is required in order to read data from GitHub API</p>
+    </div>
+</div>
+</div>
+
+
+<ng-template #content>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+</ng-template>

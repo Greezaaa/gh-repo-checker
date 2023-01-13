@@ -15,19 +15,27 @@ import { ISSUES_PER_PAGE, getRepoDataFromUrl } from 'src/app/config'
       background-color: rgba(0,0,0,0.1);
       color: rgba(0,0,0,0.3);
     }
+    .current-page {
+      border: 1px solid rgb(168 85 247);
+      color: rgb(168 85 247);
+    }
+    .current-page.active {
+      background-color: rgb(168 85 247);
+      color: white;
+    }
   `],
   templateUrl: './paginator.component.html'
 })
 export class PaginatorComponent {
   issues_per_page = ISSUES_PER_PAGE
   pages: number[] = []
-  repoUrl = ""
+  repoUrl = ''
   issuesCount = 0
   currentPage = 0
   lastPage = 0
   isLoading = false
 
-  constructor(
+  constructor (
     private readonly repositoriesStore: Store<AppStore>,
     private readonly repositoryService: RepositoryService
   ) {
@@ -52,12 +60,12 @@ export class PaginatorComponent {
     )
   }
 
-  async changePage(page: number) {
+  async changePage (page: number): Promise<void> {
     this.currentPage = page
     this.repositoriesStore.dispatch(setIssuesPage({ page }))
 
     const repoUrl = getRepoDataFromUrl(this.repoUrl)
-    if (repoUrl) {
+    if (repoUrl != null) {
       const { owner, repo } = repoUrl
       this.repositoryService.fetchIssues(owner, repo, page, (issues) => {
         this.repositoriesStore.dispatch(receiveIssues({ issues }))
